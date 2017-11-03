@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<style type="text/css">
 
 	::selection { background-color: #E13300; color: white; }
-	::-moz-selection { background-color: #E13300; color: white; }
+	::-moz-selection { background-color: #e13b45; color: white; }
 
 	body {
 		background-color: #fff;
@@ -84,6 +84,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
-
+<?= anchor('Dupa/sraczka', 'piekna strona')?>
 </body>
 </html>
