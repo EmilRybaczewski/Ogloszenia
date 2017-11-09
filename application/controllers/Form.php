@@ -8,10 +8,10 @@ class Form extends CI_Controller {
 
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('username', 'Imie', 'trim|required|min_length[2]|is_unique[usery.Imie]');
-        $this->form_validation->set_rules('password', 'Haslo', 'trim|required|min_length[8]');
+        $this->form_validation->set_rules('username', 'username', 'trim|required|min_length[2]|is_unique[usery.Imie]');
+        $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[8]');
         $this->form_validation->set_rules('passconf', 'Password Confirmation', 'trim|required|matches[password]');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[usery.Email]');
+        $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|is_unique[usery.Email]');
 
 
         if ($this->form_validation->run() == FALSE)
@@ -26,14 +26,14 @@ class Form extends CI_Controller {
 
     public function adduser()
     {
-        $Imie = $this->input->post('Imie');
-        $Haslo = $this->input->post('Haslo');
-        $Email = $this->input->post('Email');
+        $Imie = $this->input->post('username');
+        $Haslo = $this->input->post('password');
+        $Email = $this->input->post('email');
 
-        $data = array('Imie'=>$Imie, 'Haslo'=>$Haslo,);
+        $data = array('Imie'=>$Imie, 'Haslo'=>$Haslo, 'Email'=>$Email);
 
         $this->load->model('Adduser');
-        if($this->adduser()->add($data))
+        if($this->Adduser->add($data))
         {
             echo "JUPI";
         }
