@@ -5,7 +5,7 @@
 <body>
 
 
-<?php echo form_open('Form/adduser'); ?>
+<?php echo form_open('Form'); ?>
 
 <h5>Username</h5>
 <?php echo form_error('username'); ?>

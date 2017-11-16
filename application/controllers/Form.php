@@ -20,7 +20,7 @@ class Form extends CI_Controller {
         }
         else
         {
-            $this->load->view('formsuccess');
+            $this->adduser();
         }
     }
 
@@ -35,7 +35,7 @@ class Form extends CI_Controller {
         $this->load->model('Adduser');
         if($this->Adduser->add($data))
         {
-            echo "JUPI";
+            $this->load->view('formsuccess');
         }
         else
         {
