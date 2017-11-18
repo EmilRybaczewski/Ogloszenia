@@ -22,6 +22,7 @@ public function sraczka()
     $knur = "ble";
     $arr["janusz"]=$janusz;
     $arr["knur"]=$knur;
+    $this->load->view('templates/header');
     $this->load->view('nowy_widok', $arr);
 
 }
