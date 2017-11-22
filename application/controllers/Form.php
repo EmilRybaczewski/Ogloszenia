@@ -16,7 +16,9 @@ class Form extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE)
         {
+            $this->load->view('templates/header');
             $this->load->view('myform');
+            $this->load->view('templates/footer');
         }
         else
         {
