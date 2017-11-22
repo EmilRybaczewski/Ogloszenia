@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Class category
+ * @property Category_model Category_model
+ */
 class Welcome extends CI_Controller
 {
 
@@ -10,6 +14,7 @@ class Welcome extends CI_Controller
         parent::__construct();
 
         $this->load->helper('url');
+        $this->load->model('Category_model');
     }
 
 
@@ -30,9 +35,21 @@ class Welcome extends CI_Controller
      */
     public function index()
     {
+
+        $query = $this->Category_model->get_kategoria();
+        $jelop = "wessie";
+        $arr['query'] = $query;
+        $arr['query'] = $query;
+
+
+
         $this->load->view('templates/header');
-        $this->load->view('templates/category');
+        $this->load->view('templates/category', $arr);
         $this->load->view('welcome_message');
         $this->load->view('templates/footer');
+
+
+
+
     }
 }
