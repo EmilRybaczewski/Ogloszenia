@@ -36,10 +36,9 @@ class Welcome extends CI_Controller
     public function index()
     {
 
-        $query = $this->Category_model->get_kategoria();
-        $jelop = "wessie";
+        $query = $this->Category_model->cat();
         $arr['query'] = $query;
-        $arr['query'] = $query;
+
 
 
 

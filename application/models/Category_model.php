@@ -4,11 +4,12 @@ class Category_model extends CI_Model
 {
 
 
-    public function get_kategoria()
+    public function cat()
     {
-        $this->load->database('ogloszenia');
         $query = $this->db->get('kategoria');
         return $query->result();
+
+
     }
 
 }
