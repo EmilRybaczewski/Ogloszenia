@@ -1,12 +1,6 @@
-<html>
-<head>
-    <title>My Form</title>
-</head>
-<body>
 
-<h3>Your form was successfully submitted!</h3>
+<h3>CONGRATULATION YOU MADE YOUR ACCOUNT!!!!</h3>
+<h3>THERE IS ONLY ONE STEP MORE YOU HAVE TO SINGIN TO SERVICE
+    THEN YOU CAN BUY AND SELL ALL OF HUNTSMAN STUFF</h3>
 
-<p><?php echo anchor('form', 'Try it again!'); ?></p>
-
-</body>
-</html>
+<p><?php echo anchor('login', 'Best stuff HERE'); ?></p>
