@@ -41,7 +41,7 @@ class Form extends CI_Controller {
         if($this->Adduser->add($data))
         {
             $this->load->view('templates/header');
-            $this->load->view('formsucces');
+            $this->load->view('formsuccess');
             $this->load->view('templates/footer');
         }
         else
