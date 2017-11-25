@@ -14,6 +14,10 @@ class Dupa extends CI_Controller
 
     $this->load->helper('url');
     $this->load->model('Dupsko_model');
+
+    if($this->session->userdata('username') == ''){
+        redirect('/Logginc');
+    }
 }
 
 public function sraczka()

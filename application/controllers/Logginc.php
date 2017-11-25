@@ -14,6 +14,7 @@ class Logginc extends CI_Controller
         $this->load->model('Loggin_model');
         $this->load->library('form_validation');
         $this->load->library('session');
+
     }
 
 
@@ -32,9 +33,9 @@ class Logginc extends CI_Controller
             {
                 $session_data = array (
                     'username' => $username
-                );
+            );
                 $this->session->set_userdata($session_data);
-                $this->canintospace();
+                redirect('Welcome/');
             }
             else
             {
@@ -55,21 +56,7 @@ class Logginc extends CI_Controller
 
     }
 
-    public function canintospace()
-    {
-        if($this->session->userdata('username') != '')
-        {
-            echo '<h2>SAY hello'.$this->session->userdata('username').'</h2>';
-            echo    anchor('Logginc/won', 'wyloguj');
-        }
-        else
-        {
-            $this->load->view('templates/header');
-            $this->load->view('login');
-            $this->load->view('templates/footer');
-        }
-        
-    }
+
 
     public function won()
     {

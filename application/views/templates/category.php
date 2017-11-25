@@ -1,3 +1,4 @@
+<div class="row">
 <div id="cat" class="col-md-2">
     <ul>
         <?php foreach ($query as $cat) { ?>

@@ -4,6 +4,23 @@
     <link rel="stylesheet" href="<?= base_url();?>/css/bootstrap.css">
 </head>
 <body style="background-color: grey">
-<div id="cat" class="col-md-12">
-    <h1>WELCOME <small> stranger</small> here will be navbar</h1>
+<div class="row">
+<div id="cat" class="col-md-10">
+    <h1><?= anchor('/Welcome/', 'WELCOME') ?> <small> stranger</small> here will be navbar</h1>
+</div>
+<div id="cat" class="col-md-2 float-right">
+ <?php   if($this->session->userdata('username') == ''){ ?>
+     <div class="pull-right">
+    <?= anchor('Logginc/', 'Sing in', 'class="btn btn-success"')?> or
+    <?= anchor('Form/index', 'Sing up', 'class="btn btn-success"')?>
+    </div>
+<?php  } else { ?>
+     <div class="pull-right">
+     <?php $name = $this->session->userdata('username');
+       echo anchor('Dupa/sraczka', $name);
+     ?>
+     <?= anchor('Logginc/won', 'Sing out', 'class="btn btn-success"')?>
+     </div>
+<?php }?>
+</div>
 </div>

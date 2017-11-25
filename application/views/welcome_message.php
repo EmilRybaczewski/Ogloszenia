@@ -83,9 +83,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
-<?= anchor('Dupa/sraczka', 'piekna strona')?></br>
-<?= anchor('Logginc/', 'zaloguj')?></br>
-<?= anchor('Form/index', 'rejestracja')?>
+<?= anchor('Dupa/sraczka', 'piekna strona', 'class="btn btn-warning"')?></br>
+</div>
 </div>
 </body>
 </html>
