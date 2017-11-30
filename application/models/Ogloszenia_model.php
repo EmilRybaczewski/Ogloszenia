@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Dzieki temu php storm podpowiada metody przy pisaniu $this->db->cos_tam
+ * @property CI_DB_mysqli_driver $db
+ */
 class Ogloszenia_model extends CI_Model
 {
     /**
@@ -64,6 +68,7 @@ class Ogloszenia_model extends CI_Model
      *
      * @param $id_ogloszenia
      * @param int $days - domyślnie 30 dni na ogłoszenie
+     * @return bool - true, jesli sie udalo
      */
     public function setNewExpiredDate($id_ogloszenia, $days = 30)
     {
@@ -88,6 +93,7 @@ class Ogloszenia_model extends CI_Model
      *  'Tytul' => 'noz zwierzecy',
      *  'Opis' => 'Niezly i ostry',
      * ]
+     * @return bool - true, jesli sie udalo
      */
     public function addNewAnno(array $array)
     {
@@ -125,5 +131,18 @@ class Ogloszenia_model extends CI_Model
         // todo - dopisać, zmienić opis
     }
 
+
+    /**
+     * Usuwa ogłoszenie wraz z parametrami
+     *
+     * @param $id - id ogłoszenia do usuniecia
+     * @return boolean - true, jesli sie dalo wszystko usunac
+     */
+    public function deleteAnno($id)
+    {
+        $this->db->delete('parametry_ogloszenia', ['Id_ogloszenia' => $id]);
+        $is_deleted = $this->db->delete('ogloszenia', ['Id' => $id]);
+        return $is_deleted;
+    }
 
 }
