@@ -68,23 +68,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div class="col-md-10" id="cat">
-	<h1>Welcome to CodeIgniter!</h1>
+    <div>
+    <?php echo img('zdjecia/garlacz.jpg', 'height=200', 'width=200'); ?></br>
+    <p>cena</p></br>
+    <p>nazwa</p></br>
+    <p>bla bla</p></br>
+    </div>
+        <?= anchor('Dupa/sraczka', 'piekna strona', 'class="btn btn-warning"')?>
 
-
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
-
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/Welcome.php</code>
-
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
-
-
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
-<?= anchor('Dupa/sraczka', 'piekna strona', 'class="btn btn-warning"')?></br>
-</div>
 </div>
 </body>
 </html>

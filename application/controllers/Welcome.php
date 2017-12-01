@@ -15,6 +15,7 @@ class Welcome extends CI_Controller
 
         $this->load->helper('url');
         $this->load->model('Category_model');
+        $this->load->helper('html');
     }
 
 
@@ -39,15 +40,13 @@ class Welcome extends CI_Controller
         $query = $this->Category_model->cat();
         $arr['query'] = $query;
 
-
-
-
         $this->load->view('templates/header');
         $this->load->view('templates/category', $arr);
         $this->load->view('welcome_message');
         $this->load->view('templates/footer');
 
+
+
+
     }
-
 }
-
