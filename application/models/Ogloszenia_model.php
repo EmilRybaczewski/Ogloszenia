@@ -27,6 +27,19 @@ class Ogloszenia_model extends CI_Model
     }
 
     /**
+     * Zwraca dane do jednego ogloszenia
+     *
+     * @param $id - id ogloszenia
+     * @return array
+     */
+    public function getAnnoById($id)
+    {
+        $this->db->where('Id', $id);
+        return $this->db->get('ogloszenia')->first_row();
+    }
+
+
+    /**
      * Zwraca wszystkie niewygaśnięte ogłoszenia z danej kategorii ($id_kategorii)
      *
      * @param $id_kategorii
