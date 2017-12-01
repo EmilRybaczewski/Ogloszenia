@@ -64,10 +64,10 @@ INSERT INTO `kategoria` (`Id_kategorii`, `Nazwa`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `ogłoszenia`
+-- Struktura tabeli dla tabeli `ogloszenia`
 --
 
-CREATE TABLE `ogłoszenia` (
+CREATE TABLE `ogloszenia` (
   `Id` int(11) NOT NULL,
   `Tytul` text NOT NULL,
   `Opis` text NOT NULL,
@@ -158,9 +158,9 @@ ALTER TABLE `kategoria`
   ADD PRIMARY KEY (`Id_kategorii`);
 
 --
--- Indexes for table `ogłoszenia`
+-- Indexes for table `ogloszenia`
 --
-ALTER TABLE `ogłoszenia`
+ALTER TABLE `ogloszenia`
   ADD PRIMARY KEY (`Id`);
 
 --
@@ -196,9 +196,9 @@ ALTER TABLE `dupsko`
 ALTER TABLE `kategoria`
   MODIFY `Id_kategorii` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT dla tabeli `ogłoszenia`
+-- AUTO_INCREMENT dla tabeli `ogloszenia`
 --
-ALTER TABLE `ogłoszenia`
+ALTER TABLE `ogloszenia`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT dla tabeli `parametry_ogloszenia`
