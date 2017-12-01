@@ -74,7 +74,7 @@ CREATE TABLE `ogloszenia` (
   `Id_kategorii` int(11) NOT NULL,
   `Id_usera` int(11) NOT NULL,
   `Main_zdj` varchar(64) NOT NULL,
-  `Data_wyg` date NOT NULL
+  `Data_wyg` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -82,8 +82,8 @@ CREATE TABLE `ogloszenia` (
 --
 
 INSERT INTO `ogloszenia` (`Id`, `Tytul`, `Opis`, `Id_kategorii`, `Id_usera`, `Main_zdj`, `Data_wyg`) VALUES
-(1, 'Garłacz Myśliwski', 'Bardzo dobry prawie nie używany jak nowy nie oszukuje i to w dobrej cenie OKAZJA nigdy nie miałeś lepszego garłacza. Idealny od polowania na jelenie i dziki i somsiada.', 1, 2, 'zdjecia/garlacz.jpg', '2017-12-30'),
-(2, 'Karambit', 'Replika kosy z CSka idealna do oprawiania jeleni', 2, 2, 'zdjecia/karambit.jpg', '2017-12-30');
+(1, 'Garłacz Myśliwski', 'Bardzo dobry prawie nie używany jak nowy nie oszukuje i to w dobrej cenie OKAZJA nigdy nie miałeś lepszego garłacza. Idealny od polowania na jelenie i dziki i somsiada.', 1, 2, 'zdjecia/garlacz.jpg', '1514592000'),
+(2, 'Karambit', 'Replika kosy z CSka idealna do oprawiania jeleni', 2, 2, 'zdjecia/karambit.jpg', '1514592000');
 
 -- --------------------------------------------------------
 
