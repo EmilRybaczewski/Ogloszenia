@@ -19,15 +19,7 @@ class Loggin_model extends CI_Model
         $this->db->where('Imie', $username);
         $this->db->where('Haslo', $password);
         $query = $this->db->get('usery');
-
-        if($query->num_rows()>0)
-        {
-            return TRUE;
-        }
-        else
-        {
-            return FALSE;
-        }
+        return $query;
     }
 
 }

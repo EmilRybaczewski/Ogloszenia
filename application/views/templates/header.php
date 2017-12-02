@@ -6,7 +6,7 @@
 <body style="background-color: grey">
 <div class="row">
 <div id="cat" class="col-md-10">
-    <h1><?= anchor('/Welcome/', 'WELCOME') ?> <small> stranger</small> here will be navbar</h1>
+    <h1><?= anchor('/Welcome/', 'WELCOME') ?> <small> strainger</small> here will be navbar</h1>
 </div>
 <div id="cat" class="col-md-2 float-right">
  <?php   if($this->session->userdata('username') == ''){ ?>

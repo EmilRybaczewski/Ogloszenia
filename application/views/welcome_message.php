@@ -75,6 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <p>bla bla</p></br>
     </div>
         <?= anchor('Dupa/sraczka', 'piekna strona', 'class="btn btn-warning"')?>
+        <?= anchor('Ogloszenia/', 'OOO PANIEEEE PROMOCJEE', 'class="btn btn-warning"')?>
 
 </div>
 </body>

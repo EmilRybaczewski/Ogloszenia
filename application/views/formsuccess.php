@@ -3,4 +3,4 @@
 <h3>THERE IS ONLY ONE STEP MORE YOU HAVE TO SINGIN TO SERVICE
     THEN YOU CAN BUY AND SELL ALL OF HUNTSMAN STUFF</h3>
 
-<p><?php echo anchor('login', 'Best stuff HERE'); ?></p>
+<p><?php echo anchor('Logginc/', 'Best stuff HERE'); ?></p>

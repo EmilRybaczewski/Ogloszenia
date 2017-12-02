@@ -17,7 +17,7 @@ class Ogloszenia extends CI_Controller
         $this->load->helper('url');
         $this->load->helper('html');
 
-        // ja to tam sie nie pier***, tylko laduje wszystkie modele
+        // ja to tam sie nie pier***, tylko laduje wszystkie modele 💩 XD
         $this->load->model('Kategoria_model');
         $this->load->model('Ogloszenia_model');
         $this->load->model('Parametry_ogloszenia_model');
@@ -33,7 +33,7 @@ class Ogloszenia extends CI_Controller
     public function index()
     {
         $ogloszenia = $this->Ogloszenia_model->getAllAnnos();
-
+        $query['ogloszenia']= $ogloszenia;
         debug($ogloszenia);
         /* todo tutaj:
          *  - stworzyc widok i go wyswietlic
@@ -44,16 +44,11 @@ class Ogloszenia extends CI_Controller
          */
 
         // przykladowy forach do wyswietlenia produktow, ktory powinien byc prawdopodobnie w widoku, w jakiejs tabelce, col-md-3, itp
-        foreach ($ogloszenia as $ogloszenie) {
-            echo "<h1>";
-            echo $ogloszenie->Tytul;
-            echo "</h1>";
-            echo $ogloszenie->Opis;
-            echo "<hr>";
             // itd, itd
-        }
+
 
         $this->load->view('templates/header');
+        $this->load->view('ogloszenia', $query);
         $this->load->view('templates/footer');
     }
 
@@ -62,26 +57,32 @@ class Ogloszenia extends CI_Controller
      */
     public function jedno($id_ogloszenia)
     {
+
         $ogloszenie = $ogloszenia = $this->Ogloszenia_model->getAnnoById($id_ogloszenia);
         // jesli nie ma ogloszenia, to wyswietlamy info, ze nie ma
         if (!$ogloszenie) {
             return "Brak";
         }
         $parametry_ogloszenia = $this->Parametry_ogloszenia_model->getParameters($id_ogloszenia);
-
+        $zdjecia_byid = $this->Zdjecia_model->getByIdOgloszenia($id_ogloszenia);
+        $query['ogloszenie']=$ogloszenie;
+        $query['parametry_ogloszenia']=$parametry_ogloszenia;
+        $query['zdjecia_byid']=$zdjecia_byid;
         debug($ogloszenie);
         debug($parametry_ogloszenia);
+        debug($zdjecia_byid);
 
         // przykładowe wyswietlanie danych ogloszenia - trzeba to przeniesc do widoku
-        echo $ogloszenie->Tytul; // itd
-        echo "<hr>";
+       // echo $ogloszenie->Tytul; // itd
+       // echo "<hr>";
         // przykladowe wyswietlenie parametrow ogloszenia, tez przeniesc do widoku
-        foreach ($parametry_ogloszenia as $parametr) {
-            echo "<b>{$parametr->Atrybut}</b> - {$parametr->Wartosc} <br>";
-        }
+      //  foreach ($parametry_ogloszenia as $parametr) {
+        //    echo "<b>{$parametr->Atrybut}</b> - {$parametr->Wartosc} <br>";
+      //  }
 
 
         $this->load->view('templates/header');
+        $this->load->view('jedno', $query);
         $this->load->view('templates/footer');
 
         /* todo tutaj:
@@ -96,6 +97,7 @@ class Ogloszenia extends CI_Controller
     public function dodaj()
     {
         // todo - trzeba te dodawanie tutaj obmyslic, jakis formularz zapewne czy cóś
+
     }
 
     /**
