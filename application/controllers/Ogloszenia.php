@@ -96,6 +96,13 @@ class Ogloszenia extends CI_Controller
      */
     public function dodaj()
     {
+        $ogloszenia = $this->Ogloszenia_model->getAllAnnos();
+        $query['ogloszenia']= $ogloszenia;
+        debug($ogloszenia);
+
+        $this->load->view('templates/header');
+        $this->load->view('ogloszenieadd');
+        $this->load->view('templates/footer');
         // todo - trzeba te dodawanie tutaj obmyslic, jakis formularz zapewne czy cóś
 
     }

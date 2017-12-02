@@ -2,6 +2,7 @@
     .janusz {
         color: #000000;
         text-decoration: none;
+        text-align: center;
     }
     .janusz:hover {
         color: #000;
@@ -23,7 +24,6 @@
     <?php    echo "<h1>";
     echo $ogloszenie->Tytul;
     echo "</h1>";
-    echo $ogloszenie->Opis;
     echo "<p>Cena ".$ogloszenie->Cena." Zł</p>" ;
     echo "</h1>";
     ?>
