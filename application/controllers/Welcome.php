@@ -42,7 +42,7 @@ class Welcome extends CI_Controller
         $query = $this->Category_model->cat();
         $arr['query'] = $query;
 
-        debug($a);
+
 
         $this->load->view('templates/header');
         $this->load->view('templates/category', $arr);
