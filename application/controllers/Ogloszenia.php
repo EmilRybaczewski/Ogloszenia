@@ -97,35 +97,60 @@ class Ogloszenia extends CI_Controller
     {
         $ogloszenia = $this->Ogloszenia_model->getAllAnnos();
         $kat = $this->Kategoria_model->getAllCategories();
+        $kata = $this->input->post('Kategoria');
+
+        $config['upload_path'] = './zdjecia/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $this->load->library('upload', $config);
+
         $query['ogloszenia']= $ogloszenia;
         $query['kat']= $kat;
-
+        $query['kata']=$kata;
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('Tytul', 'Tytul', 'required|alpha');
         $this->form_validation->set_rules('Opis', 'Opis', 'required');
-        $this->form_validation->set_rules('Kategoria', 'Kategoria', 'required');
+        $this->form_validation->set_rules('Kategoria', 'Kategoria', 'required' );
         $this->form_validation->set_rules('Cena', 'Cena', 'required');
         $this->form_validation->set_rules('zdjecie', 'zdjecie', 'required');
 
+        $ty = $this->input->post('Tytul');
+        $op = $this->input->post('Opis');
+        $ka = $this->input->post('Kategoria');
+        $ce = $this->input->post('Cena');
+        $zd = $this->input->post('zdjecie');
+        $us = $this->session->userdata('Id_usera');;
 
         if ($this->form_validation->run() == FALSE)
         {
             $this->load->view('templates/header');
             $this->load->view('ogloszenieadd', $query);
             $this->load->view('templates/footer');
+
         }
         else
         {
-            $this->load->view('formsuccess');
+            $config['upload_path'] = './zdjecia/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['full_path'] = './zdjecia/'.$zd.'.jpg';
+            $this->load->library('upload', $config);
+            $this->upload->do_upload($zd);
+            $array = array('Tytul'=>$ty, 'Opis'=>$op, 'Cena'=>$ce, 'Id_kategorii'=>$ka, 'Id_usera'=>$us, 'Main_zdj'=>$zd);
+           if($this->Ogloszenia_model->addNewAnno($array))
+           {
+               $this->load->view('templates/header');
+               $this->load->view('formsuccess');
+               $this->load->view('templates/footer');
+           }
+           else
+           {
+               echo "drobne niepowodzenie";
+           }
         }
 
-        $config['upload_path'] = './zdjecia/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $this->load->library('upload', $config);
 
-// Alternately you can set preferences by calling the ``initialize()`` method. Useful if you auto-load the class:
-     //   $this->upload->initialize($config);
+
+
 
 
         // todo - trzeba te dodawanie tutaj obmyslic, jakis formularz zapewne czy cóś

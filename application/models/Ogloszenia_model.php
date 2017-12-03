@@ -112,7 +112,8 @@ class Ogloszenia_model extends CI_Model
     {
         $this->db->insert('ogloszenia', $array);
         $id = $this->db->insert_id();
-        return $id;
+        return $this->setNewExpiredDate($id);
+
     }
 
     /**
