@@ -119,7 +119,7 @@ class Ogloszenia extends CI_Controller
         $ka = $this->input->post('Kategoria');
         $ce = $this->input->post('Cena');
         $zd = $this->input->post('zdjecie');
-        $us = $this->session->userdata('Id_usera');;
+        $us = $this->session->userdata('Id_usera');
 
         if ($this->form_validation->run() == FALSE)
         {
@@ -164,7 +164,13 @@ class Ogloszenia extends CI_Controller
      */
     public function edytuj()
     {
-        // todo - tak samo, obmyslic jak ma te edytowanie wygladac, jakis formularz, itp
+        $ogloszenia = $this->Ogloszenia_model->getAllAnnos();
+        $kat = $this->Kategoria_model->getAllCategories();
+
+        $query['ogloszenia']= $ogloszenia;
+        $query['kat']= $kat;
+
+
     }
 
 
@@ -173,9 +179,37 @@ class Ogloszenia extends CI_Controller
      */
     public function mojeOgloszenia()
     {
-        // todo
+        $id_usera = $this->session->userdata('Id_usera');
+        $moje = $this->Ogloszenia_model->getAnnoByIdUsera($id_usera);
+        $query['moje']=$moje;
+        debug($moje);
+
+        $this->load->view('templates/header');
+        $this->load->view('ogloszeniamoje', $query);
+        $this->load->view('templates/footer');
     }
 
+    public function usun()
+    {
+        $id_usera = $this->session->userdata('Id_usera');
+        $moje = $this->Ogloszenia_model->getAnnoByIdUsera($id_usera);
+        $query['moje']=$moje;
+        debug($moje);
+
+        $id = $this->input->post('id');
+        echo $id;
+       if($this->Ogloszenia_model->deleteAnno($id)==TRUE)
+       {
+           $this->load->view('templates/header');
+           $this->load->view('ogloszeniamoje', $query);
+           $this->load->view('templates/footer');
+            echo $id;
+       }
+       else
+       {
+           echo 'WSPANIALE HEHEH';
+       }
+    }
 
     /**
      * Przedluza ogloszenie ($id) o miesiac
