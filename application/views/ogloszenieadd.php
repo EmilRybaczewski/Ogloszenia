@@ -23,7 +23,7 @@
         <label for="Cena">Cena</label></br>
         <input type="number" name="Cena" min="0" step="0.01"></br>
 
-        <label for="zdjecie">Zdjecie</label></br>
+        <label for="zdjecie">Wybierz zdjęcia</label></br>
         <input type="file" name="zdjecie" multiple>
 
         <input class="btn btn-success" type="submit" value="submit">

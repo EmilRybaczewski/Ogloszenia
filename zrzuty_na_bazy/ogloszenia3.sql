@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 03 Gru 2017, 13:19
+-- Czas generowania: 03 Gru 2017, 13:34
 -- Wersja serwera: 10.1.19-MariaDB
 -- Wersja PHP: 5.6.28
 
@@ -76,7 +76,7 @@ CREATE TABLE `ogloszenia` (
   `Id_usera` int(11) NOT NULL,
   `Main_zdj` varchar(64) NOT NULL,
   `Data_wyg` int(11) NOT NULL,
-  `Wyroznienie` int(11) NOT NULL
+  `Wyroznienie` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -84,10 +84,10 @@ CREATE TABLE `ogloszenia` (
 --
 
 INSERT INTO `ogloszenia` (`Id`, `Tytul`, `Opis`, `Cena`, `Id_kategorii`, `Id_usera`, `Main_zdj`, `Data_wyg`, `Wyroznienie`) VALUES
-(1, 'Garłacz Myśliwski', 'Bardzo dobry prawie nie używany jak nowy nie oszukuje i to w dobrej cenie OKAZJA nigdy nie miałeś lepszego garłacza. Idealny od polowania na jelenie i dziki i somsiada.', 2000, 1, 2, 'zdjecia/garlacz.jpg', 20171230, 0),
-(2, 'Karambit', 'Replika kosy z CSka idealna do oprawiania jeleni', 100, 2, 2, 'zdjecia/karambit.jpg', 20171230, 0),
-(3, 'Bla Bla', 'bla bla', 20, 2, 1, 'zdjecia/karambit1.jpg', 20171231, 0),
-(4, 'bla', 'bla', 2, 4, 2, 'zdjecia/garlacz1.jpg', 20171231, 0);
+(1, 'Garłacz Myśliwski', 'Bardzo dobry prawie nie używany jak nowy nie oszukuje i to w dobrej cenie OKAZJA nigdy nie miałeś lepszego garłacza. Idealny od polowania na jelenie i dziki i somsiada.', 2000, 1, 2, 'zdjecia/garlacz.jpg', 1514631600, 0),
+(2, 'Karambit', 'Replika kosy z CSka idealna do oprawiania jeleni', 100, 2, 2, 'zdjecia/karambit.jpg', 1514631600, 0),
+(3, 'Bla Bla', 'bla bla', 20, 2, 1, 'zdjecia/karambit1.jpg', 1514631600, 0),
+(4, 'bla', 'bla', 2, 4, 2, 'zdjecia/garlacz1.jpg', 1514631600, 0);
 
 -- --------------------------------------------------------
 
@@ -240,7 +240,7 @@ ALTER TABLE `kategoria`
 -- AUTO_INCREMENT dla tabeli `ogloszenia`
 --
 ALTER TABLE `ogloszenia`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT dla tabeli `parametry_ogloszenia`
 --
