@@ -106,12 +106,13 @@ class Ogloszenia_model extends CI_Model
      *  'Tytul' => 'noz zwierzecy',
      *  'Opis' => 'Niezly i ostry',
      * ]
-     * @return bool - true, jesli sie udalo
+     * @return int - id nowego ogloszenia, jesli udalo sie dodac. Jesli sie nie dodalo, to zwraca 0
      */
     public function addNewAnno(array $array)
     {
-        $is_added = $this->db->insert('ogloszenia', $array);
-        return $is_added;
+        $this->db->insert('ogloszenia', $array);
+        $id = $this->db->insert_id();
+        return $id;
     }
 
     /**
