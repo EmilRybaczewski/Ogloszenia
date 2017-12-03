@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Class category
  * @property Category_model Category_model
+ * @property Ogloszenia_model Ogloszenia_model
  */
 class Welcome extends CI_Controller
 {
@@ -15,6 +16,7 @@ class Welcome extends CI_Controller
 
         $this->load->helper('url');
         $this->load->model('Category_model');
+        $this->load->model('Ogloszenia_model');
         $this->load->helper('html');
     }
 
@@ -39,6 +41,8 @@ class Welcome extends CI_Controller
 
         $query = $this->Category_model->cat();
         $arr['query'] = $query;
+
+        debug($a);
 
         $this->load->view('templates/header');
         $this->load->view('templates/category', $arr);
