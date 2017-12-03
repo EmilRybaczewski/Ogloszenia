@@ -1,16 +1,8 @@
-
-
-
-
-
-
-
-
 <div id="cat" class="col-md-4 col-md-offset-4">
 
     <?php echo form_open('Logginc'); ?>
 
-    <label for="username">Login</label>
+    <label for="login">Login</label>
     <input type="text" name="login">
     <span class="text-danger"><?= form_error('login');?></span>
     <label for="password">Haslo</label>

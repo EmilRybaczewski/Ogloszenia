@@ -99,14 +99,13 @@ class Ogloszenia extends CI_Controller
         $kat = $this->Kategoria_model->getAllCategories();
         $query['ogloszenia']= $ogloszenia;
         $query['kat']= $kat;
-        debug($kat);
 
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('Tytul', 'Tytul', 'required');
+        $this->form_validation->set_rules('Tytul', 'Tytul', 'required|alpha');
         $this->form_validation->set_rules('Opis', 'Opis', 'required');
         $this->form_validation->set_rules('Kategoria', 'Kategoria', 'required');
-        $this->form_validation->set_rules('Cena', 'Cena', 'trim|required');
+        $this->form_validation->set_rules('Cena', 'Cena', 'required');
         $this->form_validation->set_rules('zdjecie', 'zdjecie', 'required');
 
 
@@ -121,13 +120,9 @@ class Ogloszenia extends CI_Controller
             $this->load->view('formsuccess');
         }
 
-      //  $config['upload_path'] = './uploads/';
-      //  $config['allowed_types'] = 'gif|jpg|png';
-      // $config['max_size']     = '100';
-      //  $config['max_width'] = '1024';
-      //  $config['max_height'] = '768';
-
-      //  $this->load->library('upload', $config);
+        $config['upload_path'] = './zdjecia/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $this->load->library('upload', $config);
 
 // Alternately you can set preferences by calling the ``initialize()`` method. Useful if you auto-load the class:
      //   $this->upload->initialize($config);

@@ -33,14 +33,14 @@ class Logginc extends CI_Controller
     public function index()
     {
         $this->form_validation->set_rules('login', 'Login', 'required');
-        $this->form_validation->set_rules('password', 'Hasełko', 'required');
+        $this->form_validation->set_rules('password', 'password', 'required');
 
         if ($this->form_validation->run())
         {
             $login = $this->input->post('login');
-            $password = $this->input->post('password');
+            $haslo = $this->input->post('password');
 
-            $login_user = $this->Usery_model->loginUser($login, $password);
+            $login_user = $this->Usery_model->loginUser($login, $haslo);
             if ($login_user) {
                 $session_data = array(
                     'username' => $login,

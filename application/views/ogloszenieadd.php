@@ -24,7 +24,7 @@
         <input type="number" name="Cena" min="0" step="0.01"></br>
 
         <label for="zdjecie">Zdjecie</label></br>
-        <input type="file" name="zdjecie" >
+        <input type="file" name="zdjecie" multiple>
 
         <input class="btn btn-success" type="submit" value="submit">
     <?php echo form_close(); ?>
