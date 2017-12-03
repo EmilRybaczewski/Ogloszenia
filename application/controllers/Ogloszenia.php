@@ -100,7 +100,7 @@ class Ogloszenia extends CI_Controller
         $kata = $this->input->post('Kategoria');
 
         $config['upload_path'] = './zdjecia/';
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $this->load->library('upload', $config);
 
         $query['ogloszenia']= $ogloszenia;
@@ -112,7 +112,7 @@ class Ogloszenia extends CI_Controller
         $this->form_validation->set_rules('Opis', 'Opis', 'required');
         $this->form_validation->set_rules('Kategoria', 'Kategoria', 'required' );
         $this->form_validation->set_rules('Cena', 'Cena', 'required');
-        $this->form_validation->set_rules('zdjecie', 'zdjecie', 'required');
+      //  $this->form_validation->set_rules('zdjecie', 'zdjecie', 'required');
 
         $ty = $this->input->post('Tytul');
         $op = $this->input->post('Opis');
@@ -132,10 +132,12 @@ class Ogloszenia extends CI_Controller
         {
             $config['upload_path'] = './zdjecia/';
             $config['allowed_types'] = 'gif|jpg|png';
-            $config['full_path'] = './zdjecia/'.$zd.'.jpg';
             $this->load->library('upload', $config);
-            $this->upload->do_upload($zd);
-            $array = array('Tytul'=>$ty, 'Opis'=>$op, 'Cena'=>$ce, 'Id_kategorii'=>$ka, 'Id_usera'=>$us, 'Main_zdj'=>$zd);
+            $this->upload->do_upload('zdjecie');
+
+            $upload_data =  $this->upload->data();
+            $file_name = $upload_data['file_name'];
+            $array = array('Tytul'=>$ty, 'Opis'=>$op, 'Cena'=>$ce, 'Id_kategorii'=>$ka, 'Id_usera'=>$us, 'Main_zdj'=> './zdjecia/'.$file_name);
            if($this->Ogloszenia_model->addNewAnno($array))
            {
                $this->load->view('templates/header');

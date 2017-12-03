@@ -1,6 +1,6 @@
 <center>
 <div id="cat" class="col-md-4 col-md-offset-4 ">
-    <?php echo form_open('ogloszenia/dodaj'); ?>
+    <?php echo form_open_multipart('ogloszenia/dodaj'); ?>
 
         <label for="Tytul">Tytuł</label></br>
         <?php echo form_error('Tytul'); ?>
@@ -29,7 +29,7 @@
 
         <label for="zdjecie">Wybierz zdjęcia</label></br>
         <?php echo form_error('zdjecie'); ?>
-        <input type="file" name="zdjecie">
+        <input type="file" name="zdjecie" size="20" />
 
         <input class="btn btn-success" type="submit" value="submit">
     <?php echo form_close(); ?>
