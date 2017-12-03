@@ -16,7 +16,6 @@ class Ogloszenia extends CI_Controller
 
         $this->load->helper('url');
         $this->load->helper('html');
-
         // ja to tam sie nie pier***, tylko laduje wszystkie modele 💩 XD
         $this->load->model('Kategoria_model');
         $this->load->model('Ogloszenia_model');
@@ -102,6 +101,26 @@ class Ogloszenia extends CI_Controller
         $query['kat']= $kat;
         debug($kat);
 
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('Tytul', 'Tytul', 'required');
+        $this->form_validation->set_rules('Opis', 'Opis', 'required');
+        $this->form_validation->set_rules('Kategoria', 'Kategoria', 'required');
+        $this->form_validation->set_rules('Cena', 'Cena', 'trim|required');
+        $this->form_validation->set_rules('zdjecie', 'zdjecie', 'required');
+
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('templates/header');
+            $this->load->view('ogloszenieadd', $query);
+            $this->load->view('templates/footer');
+        }
+        else
+        {
+            $this->load->view('formsuccess');
+        }
+
       //  $config['upload_path'] = './uploads/';
       //  $config['allowed_types'] = 'gif|jpg|png';
       // $config['max_size']     = '100';
@@ -113,9 +132,7 @@ class Ogloszenia extends CI_Controller
 // Alternately you can set preferences by calling the ``initialize()`` method. Useful if you auto-load the class:
      //   $this->upload->initialize($config);
 
-        $this->load->view('templates/header');
-        $this->load->view('ogloszenieadd', $query);
-        $this->load->view('templates/footer');
+
         // todo - trzeba te dodawanie tutaj obmyslic, jakis formularz zapewne czy cóś
 
     }
