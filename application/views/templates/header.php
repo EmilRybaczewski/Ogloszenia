@@ -19,6 +19,7 @@
      <?php $name = $this->session->userdata('username');
        echo anchor('Dupa/sraczka', $name);
      ?>
+     <?= anchor('Wiadomosci/moje', 'Moje wiadomości', 'class="btn btn-warning"')?>
      <?= anchor('Logginc/won', 'Sing out', 'class="btn btn-success"')?>
      </div>
 <?php }?>

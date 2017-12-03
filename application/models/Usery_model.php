@@ -20,19 +20,32 @@ class Usery_model extends CI_Model
     }
 
     /**
+     * Pobiera wszystkich uzytkownikow i zwraca ich w array [ "id" => "imie nazwisko"]
+     */
+    public function getAllUsersInArray()
+    {
+        $query = $this->db->get('usery')->result();
+        $result = [];
+        foreach ($query as $user) {
+            $imie_nazwisko = $user->Imie . " " . $user->Nazwisko;
+            $result[$user->Id_usera] = $imie_nazwisko;
+        }
+        return $result;
+    }
+
+    /**
      * Sprawdza, czy użytkownik z takim loginem i hasłem znajduje się w bazie. Jeśli tak, zwraca TRUE, czyli że można go logować
      *  💩
-     * @param $email
+     * @param $login
      * @param $haslo
      * @return bool - true, jeśli istenieje w bazie, false jeśli nie
      */
-    public function loginUser($email, $haslo)
+    public function loginUser($login, $haslo)
     {
-        $this->db->where('Email', $email);
+        $this->db->where('login', $login);
         $this->db->where('Haslo', $haslo);
-        $query = $this->db->get('usery');
-        if ($query->num_rows() > 0) return true;
-        else return false;
+        $result = $this->db->get('usery')->first_row();
+        return $result;
     }
 
     /**

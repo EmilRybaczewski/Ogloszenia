@@ -11,8 +11,8 @@
     <?php echo form_open('Logginc'); ?>
 
     <label for="username">Login</label>
-    <input type="text" name="username">
-    <span class="text-danger"><?= form_error('username');?></span>
+    <input type="text" name="login">
+    <span class="text-danger"><?= form_error('login');?></span>
     <label for="password">Haslo</label>
     <input type="password" name="password">
     <span class="text-danger"><?= form_error('password');?></span>
