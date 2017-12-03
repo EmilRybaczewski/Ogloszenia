@@ -34,5 +34,4 @@
         <input class="btn btn-success" type="submit" value="submit">
     <?php echo form_close(); ?>
 </div>
-    <?= $kata ?>
 </center>
