@@ -97,11 +97,24 @@ class Ogloszenia extends CI_Controller
     public function dodaj()
     {
         $ogloszenia = $this->Ogloszenia_model->getAllAnnos();
+        $kat = $this->Kategoria_model->getAllCategories();
         $query['ogloszenia']= $ogloszenia;
-        debug($ogloszenia);
+        $query['kat']= $kat;
+        debug($kat);
+
+      //  $config['upload_path'] = './uploads/';
+      //  $config['allowed_types'] = 'gif|jpg|png';
+      // $config['max_size']     = '100';
+      //  $config['max_width'] = '1024';
+      //  $config['max_height'] = '768';
+
+      //  $this->load->library('upload', $config);
+
+// Alternately you can set preferences by calling the ``initialize()`` method. Useful if you auto-load the class:
+     //   $this->upload->initialize($config);
 
         $this->load->view('templates/header');
-        $this->load->view('ogloszenieadd');
+        $this->load->view('ogloszenieadd', $query);
         $this->load->view('templates/footer');
         // todo - trzeba te dodawanie tutaj obmyslic, jakis formularz zapewne czy cóś
 
