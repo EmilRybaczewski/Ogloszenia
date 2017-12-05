@@ -108,7 +108,7 @@ class Ogloszenia extends CI_Controller
         $query['kata']=$kata;
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('Tytul', 'Tytul', 'required|alpha');
+        $this->form_validation->set_rules('Tytul', 'Tytul', 'required');
         $this->form_validation->set_rules('Opis', 'Opis', 'required');
         $this->form_validation->set_rules('Kategoria', 'Kategoria', 'required' );
         $this->form_validation->set_rules('Cena', 'Cena', 'required');
@@ -118,7 +118,6 @@ class Ogloszenia extends CI_Controller
         $op = $this->input->post('Opis');
         $ka = $this->input->post('Kategoria');
         $ce = $this->input->post('Cena');
-        $zd = $this->input->post('zdjecie');
         $us = $this->session->userdata('Id_usera');
 
         if ($this->form_validation->run() == FALSE)
@@ -170,7 +169,9 @@ class Ogloszenia extends CI_Controller
         $query['ogloszenia']= $ogloszenia;
         $query['kat']= $kat;
 
-
+        $this->load->view('templates/header');
+        $this->load->view('ogloszenieEdit', $query);
+        $this->load->view('templates/footer');
     }
 
 
@@ -194,16 +195,13 @@ class Ogloszenia extends CI_Controller
         $id_usera = $this->session->userdata('Id_usera');
         $moje = $this->Ogloszenia_model->getAnnoByIdUsera($id_usera);
         $query['moje']=$moje;
-        debug($moje);
 
         $id = $this->input->post('id');
-        echo $id;
        if($this->Ogloszenia_model->deleteAnno($id)==TRUE)
        {
            $this->load->view('templates/header');
            $this->load->view('ogloszeniamoje', $query);
            $this->load->view('templates/footer');
-            echo $id;
        }
        else
        {
