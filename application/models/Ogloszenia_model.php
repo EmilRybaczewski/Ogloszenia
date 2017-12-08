@@ -128,7 +128,7 @@ class Ogloszenia_model extends CI_Model
      *
      * Zwraca true, jesli sie udało.
      */
-    public function editAnno($id_ogloszenia, array $array)
+    public function editAnno($id_ogloszenia, $array)
     {
         $this->db->where('Id', $id_ogloszenia);
         $is_updated = $this->db->update('ogloszenia', $array);

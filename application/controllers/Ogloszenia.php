@@ -151,11 +151,6 @@ class Ogloszenia extends CI_Controller
 
 
 
-
-
-
-        // todo - trzeba te dodawanie tutaj obmyslic, jakis formularz zapewne czy cóś
-
     }
 
     /**
@@ -163,17 +158,65 @@ class Ogloszenia extends CI_Controller
      */
     public function edytuj()
     {
-        $ogloszenia = $this->Ogloszenia_model->getAllAnnos();
-        $kat = $this->Kategoria_model->getAllCategories();
+        $id = $this->input->post('id');
+        $ogloszenia = $this->Ogloszenia_model->getAnnoByIdUsera($id);
+        /// $kat = $this->Kategoria_model->getAllCategories();
+        // $id_kategorii = $this->input->post('kategoria');
+        $query['ogloszenia'] = $ogloszenia;
+        //$query['kat']= $kat;
+        //$katt = $this->Kategoria_model->getCategory($id_kategorii);
+        //$query['katt']=$katt;
 
-        $query['ogloszenia']= $ogloszenia;
-        $query['kat']= $kat;
 
-        $this->load->view('templates/header');
-        $this->load->view('ogloszenieEdit', $query);
-        $this->load->view('templates/footer');
+        $tytul = $this->input->post('tytul');
+        $opis = $this->input->post('opis');
+        $cena = $this->input->post('cena');
+        $ma = $this->input->post('main');
+
+        // $data = array('Id'=>$id,'Tytul'=>$tytul, 'Opis'=>$opis, 'Cena'=>$cena, 'Id_kategorii'=>$kategoria, 'Main_zdj'=> './zdjecia/'.$main);
+
+        $query['id'] = $id;
+        $query['tytul'] = $tytul;
+        $query['opis'] = $opis;
+        $query['ma'] = $ma;
+
+        $query['cena'] = $cena;
+
+
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('Tytul', 'Tytul', 'required');
+        $this->form_validation->set_rules('Opis', 'Opis', 'required');
+        $this->form_validation->set_rules('Cena', 'Cena', 'required');
+
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('templates/header');
+            $this->load->view('ogloszenieEdit', $query);
+            $this->load->view('templates/footer');
+
+        } else {
+            $ty = $this->input->post('Tytul');
+            $op = $this->input->post('Opis');
+            $ce = $this->input->post('Cena');
+            $config['upload_path'] = './zdjecia/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $this->load->library('upload', $config);
+            $this->upload->do_upload('zdjecie');
+
+            $upload_data = $this->upload->data();
+            $main = $upload_data['file_name'];
+            $array = array('Tytul' => $ty, 'Opis' => $op, 'Cena' => $ce, 'Main_zdj' => './zdjecia/' . $main);
+            if ($this->Ogloszenia_model->editAnno($id,$array)) {
+
+                $this->mojeOgloszenia();
+
+            } else {
+
+                echo "drobne niepowodzenie";
+            }
+        }
     }
-
 
     /**
      * Wyswietla ogloszenia danego uzytkownika
