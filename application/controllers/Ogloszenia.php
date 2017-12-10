@@ -153,6 +153,9 @@ class Ogloszenia extends CI_Controller
     public function edytuj()
     {
         $id_ogloszenia = $this->input->post('id');
+        if (!$id_ogloszenia) {
+          redirect('Ogloszenia/mojeOgloszenia');
+        }
         $ogloszenia = $this->Ogloszenia_model->getAnnoByIdUsera($id_ogloszenia);
         /// $kat = $this->Kategoria_model->getAllCategories();
         // $id_kategorii = $this->input->post('kategoria');
@@ -173,6 +176,7 @@ class Ogloszenia extends CI_Controller
         $query['tytul'] = $tytul;
         $query['opis'] = $opis;
         $query['ma'] = $ma;
+        $query['id'] = $id_ogloszenia;
 
         $query['cena'] = $cena;
 

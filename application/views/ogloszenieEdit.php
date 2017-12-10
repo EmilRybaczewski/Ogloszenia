@@ -2,7 +2,7 @@
 <div class="row">
     <div id="cat" class="col-md-4 col-md-offset-4">
 <?php echo form_open('ogloszenia/edytuj'); ?>
-
+      <input type="hidden" name="id" value="<?= $id ?>"> </br>
     <label for="Tytul">Tytuł</label></br>
 <?php echo form_error('Tytul'); ?>
     <input type="text" name="Tytul" value="<?= $tytul ?>"> </br>
