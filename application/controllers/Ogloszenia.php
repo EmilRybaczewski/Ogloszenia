@@ -251,7 +251,7 @@ class Ogloszenia extends CI_Controller
      */
     public function przedloz($id)
     {
-        // todo
+        /d/ todo
     }
     
 }
