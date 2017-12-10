@@ -19,7 +19,6 @@ class Logginc extends CI_Controller
         $this->load->library('form_validation');
         $this->load->library('session');
 
-        // ja to tam sie nie pier***, tylko laduje wszystkie modele 💩 XD
         $this->load->model('Kategoria_model');
         $this->load->model('Ogloszenia_model');
         $this->load->model('Parametry_ogloszenia_model');
@@ -32,7 +31,7 @@ class Logginc extends CI_Controller
 
     public function index()
     {
-        $this->form_validation->set_rules('login', 'Login', 'required');
+        $this->form_validation->set_rules('login', 'Login', 'trim|required|min_length[2]|is_unique[usery.Imie]');
         $this->form_validation->set_rules('password', 'password', 'required');
 
         if ($this->form_validation->run())
@@ -49,6 +48,7 @@ class Logginc extends CI_Controller
                     'Nazwisko' => $login_user->Nazwisko,
                     'Login' => $login_user->Login,
                     'Email' => $login_user->Email,
+                    'telefon' => $login_user->telefon,
                 );
                 $this->session->set_userdata($session_data);
                 redirect('Welcome/');
@@ -77,8 +77,73 @@ class Logginc extends CI_Controller
     public function won()
     {
         $this->session->unset_userdata('username');
+        $this->session->unset_userdata('Id_usera');
+        $this->session->unset_userdata('Imie');
+        $this->session->unset_userdata('Nazwisko');
+        $this->session->unset_userdata('Email');
+        $this->session->unset_userdata('telefon');
+        $this->session->unset_userdata('Login');
         $this->load->view('templates/header');
         $this->load->view('login');
         $this->load->view('templates/footer');
     }
+
+    public function wedit(){
+
+        $this->load->view('templates/header');
+        $this->load->view('userEdit');
+        $this->load->view('templates/footer');
+
+        $this->edit();
+    }
+
+
+    public function edit()
+    {
+
+        $this->form_validation->set_rules('Imie', 'Imie', 'trim|min_length[2]');
+        $this->form_validation->set_rules('Nazwisko', 'Nazwisko', 'trim|min_length[2]');
+        $this->form_validation->set_rules('telefon', 'telefon', 'trim|min_length[2]');
+        $this->form_validation->set_rules('Email', 'Email', 'trim|valid_email');
+
+
+        if ($this->form_validation->run()) {
+            $im = $this->input->post('Imie');
+            $na = $this->input->post('Nazwisko');
+            $te = $this->input->post('telefon');
+            $em = $this->input->post('Email');
+            $id_usera = $this->session->userdata('Id_usera');
+           $data = array('Imie'=>$im, 'Nazwisko'=>$na, 'Email'=>$em, 'telefon'=>$te );
+           if ($this->Usery_model->editUser($id_usera, $data) == TRUE){
+
+               $this->load->view('templates/header');
+               $this->load->view('welcome_message');
+               $this->load->view('templates/footer');
+
+           }
+           else{
+               $this->load->view('templates/header');
+               $this->load->view('userEdit');
+               $this->load->view('templates/footer');
+           }
+        }
+    }
+
+    public function usun()
+    {
+        $id_usera = $this->session->userdata('Id_usera');
+
+       if ($this->Usery_model->deleteUser($id_usera)==TRUE){
+
+           $this->load->view('templates/header');
+           $this->load->view('welcome_message');
+           $this->load->view('templates/footer');
+       }
+       else
+       {
+            echo "somfink no gejm";
+       }
+
+    }
+
 }

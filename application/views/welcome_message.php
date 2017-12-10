@@ -69,7 +69,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="col-md-10" id="cat">
     <div>
-    <?php echo img('zdjecia/garlacz.jpg', 'height=200', 'width=200'); ?></br>
     <p>cena</p></br>
     <p>nazwa</p></br>
     <p>bla bla</p></br>
@@ -78,6 +77,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?= anchor('Ogloszenia/', 'OOO PANIEEEE PROMOCJEE', 'class="btn btn-warning"')?>
         <?= anchor('Ogloszenia/dodaj', 'dodaj ogloszenie', 'class="btn btn-warning"')?>
         <?= anchor('Ogloszenia/edytuj', 'edytuj ogloszenie', 'class="btn btn-warning"')?>
+        <?= anchor('Logginc/wedit', 'edytuj usera', 'class="btn btn-info"')?>
+        <?= anchor('Logginc/usun', 'AUT', 'class="btn btn-info"')?>
         <?= anchor('Ogloszenia/mojeOgloszenia', 'moje ogloszenia', 'class="btn btn-warning"')?>
 
 </div>

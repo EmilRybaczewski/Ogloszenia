@@ -148,18 +148,12 @@ class Ogloszenia extends CI_Controller
                echo "drobne niepowodzenie";
            }
         }
-
-
-
     }
 
-    /**
-     *
-     */
     public function edytuj()
     {
-        $id = $this->input->post('id');
-        $ogloszenia = $this->Ogloszenia_model->getAnnoByIdUsera($id);
+        $id_ogloszenia = $this->input->post('id');
+        $ogloszenia = $this->Ogloszenia_model->getAnnoByIdUsera($id_ogloszenia);
         /// $kat = $this->Kategoria_model->getAllCategories();
         // $id_kategorii = $this->input->post('kategoria');
         $query['ogloszenia'] = $ogloszenia;
@@ -175,7 +169,7 @@ class Ogloszenia extends CI_Controller
 
         // $data = array('Id'=>$id,'Tytul'=>$tytul, 'Opis'=>$opis, 'Cena'=>$cena, 'Id_kategorii'=>$kategoria, 'Main_zdj'=> './zdjecia/'.$main);
 
-        $query['id'] = $id;
+        $query['$id_ogloszenia'] = $id_ogloszenia;
         $query['tytul'] = $tytul;
         $query['opis'] = $opis;
         $query['ma'] = $ma;
@@ -207,7 +201,7 @@ class Ogloszenia extends CI_Controller
             $upload_data = $this->upload->data();
             $main = $upload_data['file_name'];
             $array = array('Tytul' => $ty, 'Opis' => $op, 'Cena' => $ce, 'Main_zdj' => './zdjecia/' . $main);
-            if ($this->Ogloszenia_model->editAnno($id,$array)) {
+            if ($this->Ogloszenia_model->editAnno($id_ogloszenia, $array)==TRUE) {
 
                 $this->mojeOgloszenia();
 
