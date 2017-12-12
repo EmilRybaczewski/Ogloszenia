@@ -160,4 +160,12 @@ class Ogloszenia_model extends CI_Model
         return $is_deleted;
     }
 
+    public function getAllHighlightAnno()
+    {
+        $now_timestamp = time();
+        $this->db->where('Data_wyg >', $now_timestamp);
+        $this->db->where('Wyroznienie =', TRUE);
+        return $this->db->get('ogloszenia')->result();
+
+    }
 }
