@@ -7,15 +7,75 @@
 </head>
 <style>
     body {
-        background-color: grey ;
-        margin: 40px;
+        background-color: snow;
+        background-image: url("https://i.imgur.com/8aUfaQj.png?1");
+        margin-top: 90px;
+        margin-bottom: 200px;
+    }
+
+    .januszek {
+        background-color: floralwhite !important;
+        height: 35px;
+
+    }
+    nav {
+        margin-top: 35px;
+        border-radius: 0px 0px 0px 0px !important;
+        color:black !important;
+    }
+    .navbar-default {
+        background-color: floralwhite;
+        border-color: black;
+    }
+
+    .navbar-default .navbar-brand {
+        color: black;
+    }
+    .navbar-default .navbar-brand:hover,
+    .navbar-default .navbar-brand:focus {
+        color: black;
+    }
+    .navbar-default .navbar-nav > li > a {
+        color: black;
+    }
+    .navbar-default .navbar-nav > li > a:hover,
+    .navbar-default .navbar-nav > li > a:focus {
+        color: grey;
+    }
+    .navbar-default .navbar-nav > .active > a,
+    .navbar-default .navbar-nav > .active > a:hover,
+    .navbar-default .navbar-nav > .active > a:focus {
+        color: #555;
+        background-color: #E7E7E7;
+    }
+    .navbar-default .navbar-nav > .open > a,
+    .navbar-default .navbar-nav > .open > a:hover,
+    .navbar-default .navbar-nav > .open > a:focus {
+        color: #555;
+        background-color: #D5D5D5;
+    }
+    .navbar-default .navbar-toggle {
+        border-color: #DDD;
+    }
+    .navbar-default .navbar-toggle:hover,
+    .navbar-default .navbar-toggle:focus {
+        background-color: #DDD;
+    }
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #CCC;
+    }
+    @media (max-width: 767px) {
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+            color: #777;
+        }
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+            color: #333;
+        }
     }
 </style>
 <body>
-<div class="row">
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="col-lg-6 col-md-10 col-xs-12">
+    <nav class="navbar navbar-fixed-top  navbar-default">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
@@ -24,8 +84,9 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="<?= site_url();?>">Hunt.Them</a>
-                <img alt="brand" src="https://png.icons8.com/jeleń/ios7/50/ffffff">
+                <img alt="brand" src="https://png.icons8.com/jeleń/ios7/50/000000">
             </div>
+
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <?php foreach ($katy as $cat) { ?>
@@ -33,15 +94,13 @@
                         <?php } ?>
                     </ul>
                 </div>
-            </div>
-        </div>
     </nav>
     <div class="container-fluid">
-            <div class="col-md-5 col-md-offset-7 col-xs-6 col-xs-offset-6 well">
+            <div class="navbar-fixed-top januszek">
  <?php   if($this->session->userdata('username') == ''){ ?>
      <div class="pull-right">
-         <?= anchor('Logginc/', 'Sing in', 'class="btn btn-success"')?> or
-         <?= anchor('Form/index', 'Sing up', 'class="btn btn-success"')?>
+         <?= anchor('Logginc/', 'Sing in', 'class="text-bold"')?> or
+         <?= anchor('Form/index', 'Sing up')?>
      </div>
  <?php  } else { ?>
  <div class="pull-right">
@@ -55,4 +114,3 @@
 
         </div>
     </div>
-</div>

@@ -1,19 +1,26 @@
 <style>
-    .well{
-        background-color: darkgray;
-        border-color: black;
+    .janekk{
+        background-color: floralwhite;
+        -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        border-radius: 20px 20px 20px 20px;
+        -moz-border-radius: 20px 20px 20px 20px;
+        -webkit-border-radius: 20px 20px 20px 20px;
+        text-align: center;
     }
+
 </style>
 <div class="row">
     <div class="container-fluid">
-        <div class="well pull-right">
+        <div class="col-md-2 col-md-offset-5 janekk">
             <div>
-                <div>
-<?= anchor('Ogloszenia/dodaj', 'dodaj ogloszenie', 'class="btn btn-warning"')?>
-<?= anchor('Logginc/wedit', 'edytuj usera', 'class="btn btn-info"')?>
-<?= anchor('Logginc/usun', 'AUT', 'class="btn btn-info"')?>
-<?= anchor('Ogloszenia/mojeOgloszenia', 'moje ogloszenia', 'class="btn btn-warning"')?>
-                </div>
+                <ul class="list-unstyled">
+<li><?= anchor('Ogloszenia/dodaj', 'Dodaj ogłoszenie')?></li>
+<li><?= anchor('Logginc/wedit', 'Edytuj Konto')?></li>
+<li><?= anchor('Logginc/usun', 'Usuń Konto')?></li>
+<li><?= anchor('Ogloszenia/mojeOgloszenia', 'Moje Ogłoszenia')?></li>
+                </ul>
             </div>
         </div>
     </div>

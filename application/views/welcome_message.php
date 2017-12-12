@@ -1,4 +1,4 @@
-<div class="col-md-10 col-md-offset-1" id="cat">
+<div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1"  id="cat">
     <div>
     <p>cena</p></br>
     <p>nazwa</p></br>
