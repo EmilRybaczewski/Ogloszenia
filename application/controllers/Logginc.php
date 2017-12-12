@@ -21,16 +21,18 @@ class Logginc extends CI_Controller
 
         $this->load->model('Kategoria_model');
         $this->load->model('Ogloszenia_model');
+        $this->load->model('Category_model');
         $this->load->model('Parametry_ogloszenia_model');
         $this->load->model('Usery_model');
         $this->load->model('Wiadomosci_model');
         $this->load->model('Zdjecia_model');
-
     }
 
 
     public function index()
     {
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
         $this->form_validation->set_rules('login', 'Login', 'trim|required|min_length[2]|is_unique[usery.Imie]');
         $this->form_validation->set_rules('password', 'password', 'required');
 
@@ -56,14 +58,14 @@ class Logginc extends CI_Controller
             else
             {
                 $this->session->set_flashdata('error', 'Invalid Username or Password');
-                $this->load->view('templates/header');
+                $this->load->view('templates/header',$arr);
                 $this->load->view('login');
                 $this->load->view('templates/footer');
             }
         }
         else
         {
-            $this->load->view('templates/header');
+            $this->load->view('templates/header', $arr);
             $this->load->view('login');
             $this->load->view('templates/footer');
         }
@@ -76,6 +78,8 @@ class Logginc extends CI_Controller
 
     public function won()
     {
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('Id_usera');
         $this->session->unset_userdata('Imie');
@@ -83,14 +87,15 @@ class Logginc extends CI_Controller
         $this->session->unset_userdata('Email');
         $this->session->unset_userdata('telefon');
         $this->session->unset_userdata('Login');
-        $this->load->view('templates/header');
+        $this->load->view('templates/header',$arr);
         $this->load->view('login');
         $this->load->view('templates/footer');
     }
 
     public function wedit(){
-
-        $this->load->view('templates/header');
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
+        $this->load->view('templates/header',$arr);
         $this->load->view('userEdit');
         $this->load->view('templates/footer');
 
@@ -100,7 +105,8 @@ class Logginc extends CI_Controller
 
     public function edit()
     {
-
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
         $this->form_validation->set_rules('Imie', 'Imie', 'trim|min_length[2]');
         $this->form_validation->set_rules('Nazwisko', 'Nazwisko', 'trim|min_length[2]');
         $this->form_validation->set_rules('telefon', 'telefon', 'trim|min_length[2]');
@@ -116,13 +122,13 @@ class Logginc extends CI_Controller
            $data = array('Imie'=>$im, 'Nazwisko'=>$na, 'Email'=>$em, 'telefon'=>$te );
            if ($this->Usery_model->editUser($id_usera, $data) == TRUE){
 
-               $this->load->view('templates/header');
+               $this->load->view('templates/header', $arr);
                $this->load->view('welcome_message');
                $this->load->view('templates/footer');
 
            }
            else{
-               $this->load->view('templates/header');
+               $this->load->view('templates/header', $arr);
                $this->load->view('userEdit');
                $this->load->view('templates/footer');
            }
@@ -131,11 +137,13 @@ class Logginc extends CI_Controller
 
     public function usun()
     {
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
         $id_usera = $this->session->userdata('Id_usera');
 
        if ($this->Usery_model->deleteUser($id_usera)==TRUE){
 
-           $this->load->view('templates/header');
+           $this->load->view('templates/header', $arr);
            $this->load->view('welcome_message');
            $this->load->view('templates/footer');
        }
@@ -144,6 +152,15 @@ class Logginc extends CI_Controller
             echo "somfink no gejm";
        }
 
+    }
+
+    public function menago()
+    {
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
+        $this->load->view('templates/header',$arr);
+        $this->load->view('userMenagment');
+        $this->load->view('templates/footer');
     }
 
 }

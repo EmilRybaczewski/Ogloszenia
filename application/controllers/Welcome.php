@@ -18,6 +18,7 @@ class Welcome extends CI_Controller
         $this->load->model('Category_model');
         $this->load->model('Ogloszenia_model');
         $this->load->helper('html');
+
     }
 
 
@@ -38,19 +39,12 @@ class Welcome extends CI_Controller
      */
     public function index()
     {
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
 
-        $query = $this->Category_model->cat();
-        $arr['query'] = $query;
-
-
-
-        $this->load->view('templates/header');
-        $this->load->view('templates/category', $arr);
+        $this->load->view('templates/header', $arr);
         $this->load->view('welcome_message');
         $this->load->view('templates/footer');
-
-
-
 
     }
 }

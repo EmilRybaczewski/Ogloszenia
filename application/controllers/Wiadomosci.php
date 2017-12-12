@@ -25,6 +25,7 @@ class Wiadomosci extends CI_Controller
         $this->load->model('Parametry_ogloszenia_model');
         $this->load->model('Usery_model');
         $this->load->model('Wiadomosci_model');
+        $this->load->model('Category_model');
         $this->load->model('Zdjecia_model');
 
         // trzeba tutaj dodac, ze tutaj moga wchodzic tyko zalogowani userzy
@@ -39,6 +40,8 @@ class Wiadomosci extends CI_Controller
      */
     public function moje($success = null)
     {
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
         $id_usera = $this->session->userdata('Id_usera');
         $odebrane = $this->Wiadomosci_model->getReceivedMessages($id_usera);
         $wyslane = $this->Wiadomosci_model->getSendMessages($id_usera);
@@ -49,7 +52,7 @@ class Wiadomosci extends CI_Controller
         $query["wyslane"] = $wyslane;
         $query["usery"] = $usery;
 
-        $this->load->view('templates/header');
+        $this->load->view('templates/header', $arr);
         if ($success === "success") {
             $this->load->view('wiadomosci_success');
         }
@@ -63,6 +66,8 @@ class Wiadomosci extends CI_Controller
      */
     public function nowa_wiadomosc($id_usera_do_ktorego_wyslac = 0)
     {
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
         $usery = $this->Usery_model->getAllUsersInArray();
 
         // sprawdzamy, czy zostalo przeslane id. Jeśli nie, to musimy w widoku wyswietlic pole, gdzie mozna wybrac do kogo wyslac wiadomosc.
@@ -82,7 +87,7 @@ class Wiadomosci extends CI_Controller
         $query["id_usera_do_ktorego_wyslac"] = $id_usera_do_ktorego_wyslac;
         $query["usery"] = $usery;
 
-        $this->load->view('templates/header');
+        $this->load->view('templates/header', $arr);
         $this->load->view('wiadomosc_wyslij', $query);
         $this->load->view('templates/footer');
 

@@ -23,6 +23,7 @@ class Ogloszenia extends CI_Controller
         $this->load->model('Usery_model');
         $this->load->model('Wiadomosci_model');
         $this->load->model('Zdjecia_model');
+        $this->load->model('Category_model');
     }
 
 
@@ -31,9 +32,10 @@ class Ogloszenia extends CI_Controller
      */
     public function index()
     {
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
         $ogloszenia = $this->Ogloszenia_model->getAllAnnos();
         $query['ogloszenia']= $ogloszenia;
-        debug($ogloszenia);
         /* todo tutaj:
          *  - stworzyc widok i go wyswietlic
          *  - przekazac do niego dane z $ogloszenia i je w tym widoku wyswietlic petla foreach
@@ -46,7 +48,7 @@ class Ogloszenia extends CI_Controller
             // itd, itd
 
 
-        $this->load->view('templates/header');
+        $this->load->view('templates/header', $arr);
         $this->load->view('ogloszenia', $query);
         $this->load->view('templates/footer');
     }
@@ -57,6 +59,8 @@ class Ogloszenia extends CI_Controller
     public function jedno($id_ogloszenia)
     {
 
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
         $ogloszenie = $ogloszenia = $this->Ogloszenia_model->getAnnoById($id_ogloszenia);
         // jesli nie ma ogloszenia, to wyswietlamy info, ze nie ma
         if (!$ogloszenie) {
@@ -67,9 +71,6 @@ class Ogloszenia extends CI_Controller
         $query['ogloszenie']=$ogloszenie;
         $query['parametry_ogloszenia']=$parametry_ogloszenia;
         $query['zdjecia_byid']=$zdjecia_byid;
-        debug($ogloszenie);
-        debug($parametry_ogloszenia);
-        debug($zdjecia_byid);
 
         // przykładowe wyswietlanie danych ogloszenia - trzeba to przeniesc do widoku
        // echo $ogloszenie->Tytul; // itd
@@ -80,7 +81,7 @@ class Ogloszenia extends CI_Controller
       //  }
 
 
-        $this->load->view('templates/header');
+        $this->load->view('templates/header', $arr);
         $this->load->view('jedno', $query);
         $this->load->view('templates/footer');
 
@@ -95,6 +96,8 @@ class Ogloszenia extends CI_Controller
      */
     public function dodaj()
     {
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
         $ogloszenia = $this->Ogloszenia_model->getAllAnnos();
         $kat = $this->Kategoria_model->getAllCategories();
         $kata = $this->input->post('Kategoria');
@@ -122,7 +125,7 @@ class Ogloszenia extends CI_Controller
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('templates/header');
+            $this->load->view('templates/header', $arr);
             $this->load->view('ogloszenieadd', $query);
             $this->load->view('templates/footer');
 
@@ -139,7 +142,7 @@ class Ogloszenia extends CI_Controller
             $array = array('Tytul'=>$ty, 'Opis'=>$op, 'Cena'=>$ce, 'Id_kategorii'=>$ka, 'Id_usera'=>$us, 'Main_zdj'=> './zdjecia/'.$file_name);
            if($this->Ogloszenia_model->addNewAnno($array))
            {
-               $this->load->view('templates/header');
+               $this->load->view('templates/header', $arr);
                $this->load->view('formsuccess');
                $this->load->view('templates/footer');
            }
@@ -152,17 +155,14 @@ class Ogloszenia extends CI_Controller
 
     public function edytuj()
     {
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
         $id_ogloszenia = $this->input->post('id');
         if (!$id_ogloszenia) {
           redirect('Ogloszenia/mojeOgloszenia');
         }
         $ogloszenia = $this->Ogloszenia_model->getAnnoByIdUsera($id_ogloszenia);
-        /// $kat = $this->Kategoria_model->getAllCategories();
-        // $id_kategorii = $this->input->post('kategoria');
         $query['ogloszenia'] = $ogloszenia;
-        //$query['kat']= $kat;
-        //$katt = $this->Kategoria_model->getCategory($id_kategorii);
-        //$query['katt']=$katt;
 
 
         $tytul = $this->input->post('tytul');
@@ -170,7 +170,6 @@ class Ogloszenia extends CI_Controller
         $cena = $this->input->post('cena');
         $ma = $this->input->post('main');
 
-        // $data = array('Id'=>$id,'Tytul'=>$tytul, 'Opis'=>$opis, 'Cena'=>$cena, 'Id_kategorii'=>$kategoria, 'Main_zdj'=> './zdjecia/'.$main);
 
         $query['$id_ogloszenia'] = $id_ogloszenia;
         $query['tytul'] = $tytul;
@@ -189,7 +188,7 @@ class Ogloszenia extends CI_Controller
 
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header');
+            $this->load->view('templates/header', $arr);
             $this->load->view('ogloszenieEdit', $query);
             $this->load->view('templates/footer');
 
@@ -197,14 +196,9 @@ class Ogloszenia extends CI_Controller
             $ty = $this->input->post('Tytul');
             $op = $this->input->post('Opis');
             $ce = $this->input->post('Cena');
-            $config['upload_path'] = './zdjecia/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $this->load->library('upload', $config);
-            $this->upload->do_upload('zdjecie');
 
-            $upload_data = $this->upload->data();
-            $main = $upload_data['file_name'];
-            $array = array('Tytul' => $ty, 'Opis' => $op, 'Cena' => $ce, 'Main_zdj' => './zdjecia/' . $main);
+
+            $array = array('Tytul' => $ty, 'Opis' => $op, 'Cena' => $ce);
             if ($this->Ogloszenia_model->editAnno($id_ogloszenia, $array)==TRUE) {
 
                 $this->mojeOgloszenia();
@@ -221,18 +215,22 @@ class Ogloszenia extends CI_Controller
      */
     public function mojeOgloszenia()
     {
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
         $id_usera = $this->session->userdata('Id_usera');
         $moje = $this->Ogloszenia_model->getAnnoByIdUsera($id_usera);
         $query['moje']=$moje;
         debug($moje);
 
-        $this->load->view('templates/header');
+        $this->load->view('templates/header', $arr);
         $this->load->view('ogloszeniamoje', $query);
         $this->load->view('templates/footer');
     }
 
     public function usun()
     {
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
         $id_usera = $this->session->userdata('Id_usera');
         $moje = $this->Ogloszenia_model->getAnnoByIdUsera($id_usera);
         $query['moje']=$moje;
@@ -240,7 +238,7 @@ class Ogloszenia extends CI_Controller
         $id = $this->input->post('id');
        if($this->Ogloszenia_model->deleteAnno($id)==TRUE)
        {
-           $this->load->view('templates/header');
+           $this->load->view('templates/header', $arr);
            $this->load->view('ogloszeniamoje', $query);
            $this->load->view('templates/footer');
        }
@@ -255,7 +253,7 @@ class Ogloszenia extends CI_Controller
      */
     public function przedloz($id)
     {
-        /d/ todo
+        // todo
     }
     
 }

@@ -7,6 +7,9 @@ class Form extends CI_Controller {
 
     public function index()
     {
+        $this->load->model('Category_model');
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
         $this->load->helper(array('form', 'url'));
 
         $this->load->library('form_validation');
@@ -19,7 +22,7 @@ class Form extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('templates/header');
+            $this->load->view('templates/header', $arr);
             $this->load->view('myform');
             $this->load->view('templates/footer');
         }
@@ -31,6 +34,10 @@ class Form extends CI_Controller {
 
     public function adduser()
     {
+        $this->load->model('Category_model');
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
+
         $Imie = $this->input->post('username');
         $Haslo = $this->input->post('password');
         $Email = $this->input->post('email');
@@ -40,7 +47,7 @@ class Form extends CI_Controller {
         $this->load->model('Adduser');
         if($this->Adduser->add($data))
         {
-            $this->load->view('templates/header');
+            $this->load->view('templates/header', $arr);
             $this->load->view('formsuccess');
             $this->load->view('templates/footer');
         }

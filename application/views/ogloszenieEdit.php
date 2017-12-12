@@ -17,10 +17,6 @@
 <?php echo form_error('Cena'); ?>
     <input type="number" name="Cena" min="0" step="0.01"  value="<?= $cena ?>"></br>
 
-    <label for="zdjecie">Wybierz zdjęcia</label></br>
-    <?php echo form_error('zdjecie'); ?>
-    <input type="file" name="zdjecie">
-
     <input class="btn btn-success" type="submit" value="submit">
 <?php echo form_close(); ?>
     </div>
