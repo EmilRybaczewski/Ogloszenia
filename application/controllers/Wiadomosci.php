@@ -42,6 +42,7 @@ class Wiadomosci extends CI_Controller
     {
         $katy = $this->Category_model->cat();
         $arr['katy'] = $katy;
+
         $id_usera = $this->session->userdata('Id_usera');
         $odebrane = $this->Wiadomosci_model->getReceivedMessages($id_usera);
         $wyslane = $this->Wiadomosci_model->getSendMessages($id_usera);
