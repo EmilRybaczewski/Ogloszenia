@@ -217,6 +217,7 @@ class Ogloszenia extends CI_Controller
     {
         $katy = $this->Category_model->cat();
         $arr['katy'] = $katy;
+
         $id_usera = $this->session->userdata('Id_usera');
         $moje = $this->Ogloszenia_model->getAnnoByIdUsera($id_usera);
         $query['moje']=$moje;
@@ -231,6 +232,7 @@ class Ogloszenia extends CI_Controller
     {
         $katy = $this->Category_model->cat();
         $arr['katy'] = $katy;
+
         $id_usera = $this->session->userdata('Id_usera');
         $moje = $this->Ogloszenia_model->getAnnoByIdUsera($id_usera);
         $query['moje']=$moje;
@@ -255,5 +257,29 @@ class Ogloszenia extends CI_Controller
     {
         // todo
     }
-    
+
+    public function wyroznij($success = null)
+    {
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
+
+        $id_usera = $this->session->userdata('Id_usera');
+        $moje = $this->Ogloszenia_model->getAnnoByIdUsera($id_usera);
+        $query['moje']=$moje;
+
+        $id = $this->input->post('id');
+        if($this->Ogloszenia_model->HighlightAnno($id)==TRUE)
+        {
+            $this->load->view('templates/header', $arr);
+            if ($success === "success") {
+                $this->load->view('wyroznienie_success');
+            }
+            $this->load->view('ogloszeniamoje', $query);
+            $this->load->view('templates/footer');
+        }
+        else
+        {
+            echo 'WSPANIALE HEHEH';
+        }
+    }
 }

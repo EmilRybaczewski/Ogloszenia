@@ -160,6 +160,12 @@ class Ogloszenia_model extends CI_Model
         return $is_deleted;
     }
 
+    /**
+     * Wyświetla wszystkie wyróżnione nie wygaśnięte ogłoszenia
+     *
+     *
+     * @return array - z danymi
+     */
     public function getAllHighlightAnno()
     {
         $now_timestamp = time();
@@ -167,5 +173,19 @@ class Ogloszenia_model extends CI_Model
         $this->db->where('Wyroznienie =', TRUE);
         return $this->db->get('ogloszenia')->result();
 
+    }
+
+    /**
+     * Wyróżnia ogłoszenie dla parametru $id_ogloszenia
+     *
+     * @param $id - id ogłoszenia do wyróżnienia
+     * @return boolean - true jeśli wyróżniło
+     */
+    public function HighlightAnno($id_ogloszenia)
+    {
+        $this->db->set('Wyroznienie',  TRUE);
+        $this->db->where('Id', $id_ogloszenia);
+        $is_highlighted = $this->db->update('ogloszenia');
+        return $is_highlighted;
     }
 }

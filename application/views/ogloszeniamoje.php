@@ -34,7 +34,7 @@
             </a>
             <?=  form_open('ogloszenia/usun') ?>
             <input type="hidden" name="id" value="<?= $id ?>">
-            <input class="btn btn-danger" type="submit" value="usun">
+            <input class="btn btn-danger" type="submit" value="Usuń">
             <?=   form_close() ?>
             <?=  form_open('ogloszenia/edytuj') ?>
             <input type="hidden" name="id" value="<?= $id ?>">
@@ -43,7 +43,11 @@
             <input type="hidden" name="kategoria" value="<?= $kategoria ?>">
             <input type="hidden" name="cena" value="<?= $cena ?>">
             <input type="hidden" name="main" value="<?= $main ?>">
-            <input class="btn btn-success" type="submit" value="edytuj">
+            <input class="btn btn-success" type="submit" value="Edytuj">
+            <?=   form_close() ?>
+            <?=  form_open('ogloszenia/wyroznij') ?>
+            <input type="hidden" name="id" value="<?= $id ?>">
+            <input class="btn btn-info" type="submit" value="Wyróżnij">
             <?=   form_close() ?>
         </div>
         <?php
