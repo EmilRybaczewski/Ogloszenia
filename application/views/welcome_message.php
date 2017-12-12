@@ -4,35 +4,37 @@
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <?php foreach ($wyr as $oglosz) {
-        $main = $oglosz->Main_zdj  ?>
-            <li data-target="#myCarousel" data-slide-to="<?= $oglosz->Id ?>"></li>
+        $main = $oglosz->Main_zdj;
+         $id = $oglosz->Id;
+            ?>
+            <li data-target="#myCarousel" data-slide-to="<?= $id ?>"></li>
 
         <?php } ?>
         </ol>
         <div class="carousel-inner">
             <div class="item active">
-                <img src="https://i.imgur.com/O1U1GvL.jpg" class="center-block">
+                <img src="http://www.12dzik.pl/images/Galeria/Jele%C5%84_Szl/151748_jelen-aka-drzewa-mgla.jpg" height="800" width="800" class="center-block">
                 <div class="carousel-caption">
-                    <h3>Los Angeles</h3>
-                    <p>LA is always so much fun!</p>
+                    <h3>Wyróżnione Pozycje</h3>
+                    <p>NAJLEPSZ Z NAJLEPSZYCH OGŁOSZENIA W SERWISIE</p>
                 </div>
             </div>
             <?php foreach ($wyr as $oglosz) {
-            $main = $oglosz->Main_zdj  ?>
+            $main = $oglosz->Main_zdj;
+                $id = $oglosz->Id;
+            ?>
             <div class="item">
-                <img src="<?=base_url($main)?>"  class="center-block">
+                <a href="<?=base_url("index.php/Ogloszenia/jedno/".$id)?>" class="janusz">
+                <img src="<?=base_url($main)?>"  height="800" width="800" class="center-block">
                 <div class="carousel-caption">
                     <h3><?= $oglosz->Tytul ?></h3>
                     <p><?= $oglosz->Cena ?></p>
                 </div>
             </div>
+
         <?php } ?>
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
         </a>
         <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
         </a>
 

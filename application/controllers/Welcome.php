@@ -43,7 +43,6 @@ class Welcome extends CI_Controller
         $arr['katy'] = $katy;
         $wyr = $this->Ogloszenia_model->getAllHighlightAnno();
         $pup['wyr'] = $wyr;
-        debug($wyr);
         $this->load->view('templates/header', $arr);
         $this->load->view('welcome_message', $pup);
         $this->load->view('templates/footer');
