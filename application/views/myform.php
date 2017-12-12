@@ -1,25 +1,39 @@
 
 <div id="cat" class="col-md-4 col-md-offset-4">
 
+  <?php echo validation_errors(); ?>
+
     <?php echo form_open('Form'); ?>
 
-    <h5>Username</h5>
+    <label for='username'>Nazwa Uzytkownika</label></br>
     <?php echo form_error('username'); ?>
     <input type="text" name="username" value="<?php echo set_value('username'); ?>" size="50" />
 
-    <h5>Password</h5>
+    <label for='password'>Haslo</label></br>
     <?php echo form_error('password'); ?>
     <input type="text" name="password" value="<?php echo set_value('password'); ?>" size="50" />
 
-    <h5>Password Confirm</h5>
+    <label for='passconf'>Potwierdzenie Hasla</label></br>
     <?php echo form_error('passconf'); ?>
-    <input type="text" name="passconf" value="<?php echo set_value('passconf'); ?>"/>
+    <input type="text" name="passconf" value="<?php echo set_value('passconf'); ?>" size="50" />
 
-    <h5>Email Address</h5>
+    <label for='imie'>Imie</label></br>
+    <?php echo form_error('imie'); ?>
+    <input type="text" name="imie" value="<?php echo set_value('imie'); ?>" size="50" />
+
+    <label for='nazwisko'>Nazwisko</label></br>
+    <?php echo form_error('nazwisko'); ?>
+    <input type="text" name="nazwisko" value="<?php echo set_value('nazwisko'); ?>" size="50" />
+
+    <label for='telefon'>Telefon</label></br>
+    <?php echo form_error('telefon'); ?>
+    <input type="text" name="telefon" value="<?php echo set_value('telefon'); ?>" />
+
+    <label for='email'>Adres Email</label></br>
     <?php echo form_error('email'); ?>
     <div class="input-group">
         <span class="input-group-addon">@</span>
-        <input class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" type="text" name="email" value="<?php echo set_value('email'); ?>"  />
+        <input class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" type="text" name="email" value="<?php echo set_value('email'); ?>" />
     </div>
     <div><input class="btn btn-primary" type="submit" value="Submit" /></div>
 
