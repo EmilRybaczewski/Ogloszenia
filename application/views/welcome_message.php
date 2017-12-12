@@ -20,20 +20,12 @@
             <?php foreach ($wyr as $oglosz) {
             $main = $oglosz->Main_zdj  ?>
             <div class="item">
-                <img src="chicago.jpg" alt="Chicago">
-                <div class="carousel-caption">
-                    <h3>Chicago</h3>
-                    <p>Thank you, Chicago!</p>
-                </div>
-            </div>
-            <div class="item">
                 <img src="<?=base_url($main)?>"  class="center-block">
                 <div class="carousel-caption">
-                    <h3>New York</h3>
-                    <p>We love the Big Apple!</p>
+                    <h3><?= $oglosz->Tytul ?></h3>
+                    <p><?= $oglosz->Cena ?></p>
                 </div>
             </div>
-        </div>
         <?php } ?>
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left"></span>
