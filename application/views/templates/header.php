@@ -10,7 +10,7 @@
     body {
         background-color: snow;
         background-image: url("https://i.imgur.com/8aUfaQj.png?1");
-        margin-top: 90px;
+        margin-top: 120px;
         margin-bottom: 200px;
     }
 
@@ -112,13 +112,24 @@
      </div>
  <?php  } else { ?>
  <div class="pull-right">
-     <?php $name = $this->session->userdata('username');
-     echo anchor('Logginc/menago', $name);
-     ?>
-     <?= anchor('Wiadomosci/moje', 'Moje wiadomości', 'class="btn btn-warning"')?>
+     <?php $name = $this->session->userdata('username'); ?>
+     <div class="btn-group">
+         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <?= anchor('Logginc/menago', $name); ?> <span class="caret"></span>
+         </button>
+         <ul class="dropdown-menu">
+             <li> <?= anchor('Ogloszenia', 'Wszystkie ogloszenia') ?> </li>
+             <li><?= anchor('Ogloszenia/mojeOgloszenia', 'Moje Ogłoszenia')?></li>
+             <li><?= anchor('Ogloszenia/dodaj', 'Dodaj ogłoszenie')?></li>
+             <li><?= anchor('Wiadomosci/moje', 'Moje wiadomości')?></li>
+             <li><?= anchor('Logginc/wedit', 'Edytuj Konto')?></li>
+             <li><?= anchor('Logginc/usun', 'Usuń Konto')?></li>
+         </ul>
+     </div>
      <?= anchor('Logginc/won', 'Sing out', 'class="btn btn-success"')?>
  </div>
 <?php }?>
 
         </div>
     </div>
+
