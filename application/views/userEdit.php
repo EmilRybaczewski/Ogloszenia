@@ -1,6 +1,6 @@
 <center>
     <div class="row">
-        <div id="cat" class="col-md-4 col-md-offset-4">
+        <div class="col-md-4 col-md-offset-4">
             <?php echo form_open('Logginc/edit'); ?>
             <?php $imie = $this->session->userdata('Imie');
                   $nazwisko = $this->session->userdata('Nazwisko');

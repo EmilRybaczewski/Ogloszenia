@@ -7,7 +7,7 @@
         $Cena = $ogloszenia->Cena;
     ?>
     <div id="cat" class="col-md-4 col-md-offset-4">
-      <span class="text-danger"><?php echo form_open('ogloszenia/edytuj'); ?></span>
+    <?php echo form_open('ogloszenia/edytuj'); ?>
       <input type="hidden" name="id" value="<?= $id ?>"> </br>
     <label for="Tytul">Tytuł</label></br>
     <span class="text-danger"><?php echo form_error('Tytul'); ?></span>
