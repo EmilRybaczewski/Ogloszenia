@@ -75,9 +75,7 @@ class Ogloszenia extends CI_Controller
         $query['ogloszenie']=$ogloszenie;
         $query['parametry_ogloszenia']=$parametry_ogloszenia;
         $query['zdjecia_byid']=$zdjecia_byid;
-        debug($ogloszenie);
-        debug($parametry_ogloszenia);
-        debug($zdjecia_byid);
+
         // przykładowe wyswietlanie danych ogloszenia - trzeba to przeniesc do widoku
        // echo $ogloszenie->Tytul; // itd
        // echo "<hr>";

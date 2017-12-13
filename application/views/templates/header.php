@@ -19,6 +19,10 @@
         height: 35px;
 
     }
+    .gunwo {
+        background-color: floralwhite !important;
+    }
+
     nav {
         margin-top: 35px;
         border-radius: 0px 0px 0px 0px !important;

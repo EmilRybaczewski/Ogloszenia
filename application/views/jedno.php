@@ -1,5 +1,9 @@
 <?php $main = $ogloszenie->Main_zdj; ?>
-<div class="text-center"><h1><b><?= $ogloszenie->Tytul ?></b></h1></div>
+    <div class="col-md-10 col-md-offset-1">
+    <div class="panel  panel-default">
+    <div class="panel-heading gunwo">
+<div class="text-center"><h1 class="panel-title"><b><?= $ogloszenie->Tytul ?></b></h1></div>
+    </div>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -23,6 +27,9 @@
     <a class="right carousel-control" href="#myCarousel" data-slide="next">
     </a>
     </div>
+    <div class="panel-body gunwo gunwo1">
+    <h2><?= $ogloszenie->Opis ?></h2>
 <?php foreach ($parametry_ogloszenia as $parametr) {
     echo "<b>{$parametr->Atrybut}</b> - {$parametr->Wartosc} <br>";
-}
+} ?> </div>
+

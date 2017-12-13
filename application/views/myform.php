@@ -27,8 +27,10 @@
 
     <label for='Telefon'>Telefon</label></br>
     <?php echo form_error('telefon'); ?>
-    <input type="text" class="form-control" name="telefon" value="<?php echo set_value('telefon'); ?>"></br>
-
+   <div class="input-group">
+   <span class="input-group-addon"><img src="https://png.icons8.com/harambe-goryl/androidL/20/000000"></span>
+   <input class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" type="text"  name="telefon" value="<?php echo set_value('telefon'); ?>"></br>
+   </div>
     <label for='Email'>Adres Email</label></br>
     <?php echo form_error('email'); ?>
     <div class="input-group">
