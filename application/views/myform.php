@@ -43,7 +43,7 @@
     <label for='Telefon'>Telefon</label></br>
     <span class="text-danger"><?php echo form_error('telefon');?></span>
    <div class="input-group">
-   <span class="input-group-addon"><img src="https://png.icons8.com/harambe-goryl/androidL/20/000000"></span>
+   <span class="input-group-addon"><img src="https://png.icons8.com/harambe-goryl/androidL/17/000000"></span>
    <input class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" type="text"  name="telefon" value="<?php echo set_value('telefon'); ?>"></br>
     </div>
 
