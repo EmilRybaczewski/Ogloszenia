@@ -15,7 +15,7 @@
 
     <label for="Opis">Opis</label></br>
     <span class="text-danger"><?php echo form_error('Opis'); ?></span>
-    <textarea name="Opis" style="resize:none" cols="40" rows="5" ><?= $Opis ?></textarea></br>
+    <textarea class="form-control" name="Opis" style="resize:none" cols="40" rows="5" ><?= $Opis ?></textarea></br>
 
     <label for="Cena">Cena</label></br>
     <span class="text-danger"><?php echo form_error('Cena'); ?></span>
