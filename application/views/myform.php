@@ -47,7 +47,7 @@
    <input class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" type="text"  name="telefon" value="<?php echo set_value('telefon'); ?>"></br>
    </div>
     <label for='Email'>Adres Email</label></br>
-    <?php echo form_error('email'); ?>
+    <span class="text-danger"><?php echo form_error('email'); ?></span>
     <div class="input-group">
         <span class="input-group-addon">@</span>
         <input class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" type="text" name="email" value="<?php echo set_value('email'); ?>"></br>
