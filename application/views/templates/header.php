@@ -107,8 +107,8 @@
             <div class="navbar-fixed-top januszek">
  <?php   if($this->session->userdata('username') == ''){ ?>
      <div class="pull-right">
-         <?= anchor('Logginc/', 'Sign in', 'class="text-bold"')?> or
-         <?= anchor('Form/index', 'Sign up')?>
+         <?= anchor('Logginc/', 'Zaloguj', 'class="text-bold"')?> or
+         <?= anchor('Form/index', 'Zarejestruj')?>
      </div>
  <?php  } else { ?>
  <div class="pull-right">
@@ -116,7 +116,7 @@
      echo anchor('Logginc/menago', $name);
      ?>
      <?= anchor('Wiadomosci/moje', 'Moje wiadomości', 'class="btn btn-warning"')?>
-     <?= anchor('Logginc/won', 'Sign out', 'class="btn btn-success"')?>
+     <?= anchor('Logginc/won', 'Wyloguj', 'class="btn btn-success"')?>
  </div>
 <?php }?>
 
