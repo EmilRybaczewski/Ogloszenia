@@ -90,10 +90,12 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <?php foreach ($katy as $cat) { ?>
-                            <li><a href="#"><?= $cat->Nazwa ?></a></li>
+                        <?php foreach ($katy as $cat) {
+                          $id = $cat->Id_kategorii;
+                            ?>
+                            <li><a href="<?=base_url("index.php/Ogloszenia/kategorie/".$id)?>"><?= $cat->Nazwa ?></a></li>
                         <?php } ?>
-                        <?= anchor('Ogloszenia', 'wszystkie ogloszenia') ?>
+                        <li> <?= anchor('Ogloszenia', 'wszystkie ogloszenia') ?> </li>
                     </ul>
                 </div>
     </nav>

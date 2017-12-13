@@ -28,9 +28,11 @@ class Wiadomosci extends CI_Controller
         $this->load->model('Category_model');
         $this->load->model('Zdjecia_model');
 
-        // trzeba tutaj dodac, ze tutaj moga wchodzic tyko zalogowani userzy
-        // niezalogowanym w tyl zwrot i woon!!!
-        // ...
+        if($this->session->userdata('username') == ''){
+
+            redirect('Logginc/ero');
+        }
+
 
 
     }

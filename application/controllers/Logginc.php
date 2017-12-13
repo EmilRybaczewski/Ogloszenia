@@ -28,6 +28,11 @@ class Logginc extends CI_Controller
         $this->load->model('Zdjecia_model');
     }
 
+    public function ero()
+    {
+        $this->load->view('login_error');
+        $this->index();
+    }
 
     public function index()
     {
@@ -123,7 +128,7 @@ class Logginc extends CI_Controller
            if ($this->Usery_model->editUser($id_usera, $data) == TRUE){
 
                $this->load->view('templates/header', $arr);
-               $this->load->view('welcome_message');
+               redirect('Welcome');
                $this->load->view('templates/footer');
 
            }
@@ -143,8 +148,15 @@ class Logginc extends CI_Controller
 
        if ($this->Usery_model->deleteUser($id_usera)==TRUE){
 
+           $this->session->unset_userdata('username');
+           $this->session->unset_userdata('Id_usera');
+           $this->session->unset_userdata('Imie');
+           $this->session->unset_userdata('Nazwisko');
+           $this->session->unset_userdata('Email');
+           $this->session->unset_userdata('telefon');
+           $this->session->unset_userdata('Login');
            $this->load->view('templates/header', $arr);
-           $this->load->view('welcome_message');
+           redirect('Welcome');
            $this->load->view('templates/footer');
        }
        else

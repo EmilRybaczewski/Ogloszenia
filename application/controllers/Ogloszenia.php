@@ -24,6 +24,10 @@ class Ogloszenia extends CI_Controller
         $this->load->model('Wiadomosci_model');
         $this->load->model('Zdjecia_model');
         $this->load->model('Category_model');
+        if($this->session->userdata('username') == ''){
+
+            redirect('Logginc/ero');
+        }
     }
 
 
@@ -306,5 +310,22 @@ class Ogloszenia extends CI_Controller
         {
             echo 'WSPANIALE HEHEH';
         }
+    }
+
+    public function kategorie($id_kategorii)
+    {
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
+        $ogloszenia = $this->Ogloszenia_model->getAnnoByIdKategorii($id_kategorii);
+        if (!$ogloszenia) {
+            echo "Brak";
+        }
+
+        $query['ogloszenia']=$ogloszenia;
+
+        $this->load->view('templates/header', $arr);
+        $this->load->view('pokategorii', $query);
+        $this->load->view('templates/footer');
+
     }
 }
