@@ -50,7 +50,7 @@
         <input type="file" class="form-control" name="zdjecie" size="20" >
       </div>
 
-        <input class="btn btn-success" type="submit" value="submit">
+        <input class="btn btn-success" type="submit" value="Zatwierdz">
     <?php echo form_close(); ?>
 </div>
 </center>

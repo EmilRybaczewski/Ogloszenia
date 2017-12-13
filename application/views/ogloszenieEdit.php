@@ -29,7 +29,7 @@
     <input type="number" class="form-control" name="Cena" min="0" step="0.01"  value="<?= $Cena ?>"></br>
   </div>
 
-    <input class="btn btn-success" type="submit" value="submit">
+    <input class="btn btn-success" type="submit" value="Zatwierdz">
 <?php echo form_close(); ?>
     </div>
 </div>

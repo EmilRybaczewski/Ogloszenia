@@ -53,7 +53,7 @@
         <span class="input-group-addon">@</span>
         <input class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" type="text" name="email" value="<?php echo set_value('email'); ?>"></br>
     </div></br>
-    <div><input class="btn btn-primary btn-block" type="submit" value="Submit"></div>
+    <div><input class="btn btn-primary btn-block" type="submit" value="Zatwierdz"></div>
     </form>
 </div>
 </center>

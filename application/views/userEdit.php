@@ -34,7 +34,7 @@
                 <span class="input-group-addon">@</span>
             <input type="email" class="form-control" name="Email" value="<?= $email ?>"> </br></div></br>
 
-            <input class="btn btn-success" type="submit" value="submit">
+            <input class="btn btn-success" type="submit" value="Zatwierdz">
             <?php echo form_close(); ?>
         </div>
     </div>

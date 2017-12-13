@@ -1,6 +1,6 @@
 <html>
 <head>
-        <title>Ogloszenia - Emil i Maciej</title>
+        <title>Ogloszenia - Emil, Maciej i Lukasz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="<?= base_url();?>/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -106,9 +106,9 @@
     <div class="container-fluid">
             <div class="navbar-fixed-top januszek">
  <?php   if($this->session->userdata('username') == ''){ ?>
-     <div class="pull-right">
-         <?= anchor('Logginc/', 'Sing in', 'class="text-bold"')?> or
-         <?= anchor('Form/index', 'Sing up')?>
+     <div class="pull-right" style="margin: 5">
+         <?= anchor('Logginc/', 'Logowanie', 'class="text-bold"')?> or
+         <?= anchor('Form/index', 'Zarejestruj')?>
      </div>
  <?php  } else { ?>
  <div class="pull-right">
@@ -126,10 +126,9 @@
              <li><?= anchor('Logginc/usun', 'Usuń Konto')?></li>
          </ul>
      </div>
-     <?= anchor('Logginc/won', 'Sing out', 'class="btn btn-success"')?>
+     <?= anchor('Logginc/won', 'Wyloguj', 'class="btn btn-success"')?>
  </div>
 <?php }?>
 
         </div>
     </div>
-
