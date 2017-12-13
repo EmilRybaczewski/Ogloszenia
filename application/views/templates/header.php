@@ -93,6 +93,7 @@
                         <?php foreach ($katy as $cat) { ?>
                             <li><a href="#"><?= $cat->Nazwa ?></a></li>
                         <?php } ?>
+                        <?= anchor('Ogloszenia', 'wszystkie ogloszenia') ?>
                     </ul>
                 </div>
     </nav>
