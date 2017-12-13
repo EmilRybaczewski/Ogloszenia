@@ -89,10 +89,15 @@ class Ogloszenia extends CI_Controller
         $query['kata']=$kata;
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('Tytul', 'Tytul', 'required');
-        $this->form_validation->set_rules('Opis', 'Opis', 'required');
-        $this->form_validation->set_rules('Kategoria', 'Kategoria', 'required' );
-        $this->form_validation->set_rules('Cena', 'Cena', 'required');
+        $this->form_validation->set_rules('Tytul', 'Tytul', 'required',
+        array('required'=>'Tytul jest wymagany'));
+        $this->form_validation->set_rules('Opis', 'Opis', 'required',
+        array('required'=>'Opis jest wymagany'));
+        $this->form_validation->set_rules('Kategoria', 'Kategoria', 'required',
+        array('required'=>'Kategoria jest wymagana'));
+        $this->form_validation->set_rules('Cena', 'Cena', 'required',
+        array('required'=>'Cena jest wymagana'));
+
       //  $this->form_validation->set_rules('zdjecie', 'zdjecie', 'required');
 
         $ty = $this->input->post('Tytul');
@@ -139,9 +144,12 @@ class Ogloszenia extends CI_Controller
         $query['ogloszenia'] = $ogloszenia;
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('Tytul', 'Tytul', 'required');
-        $this->form_validation->set_rules('Opis', 'Opis', 'required');
-        $this->form_validation->set_rules('Cena', 'Cena', 'required');
+        $this->form_validation->set_rules('Tytul', 'Tytul', 'required',
+        array('required'=>'Tytul jest wymagany'));
+        $this->form_validation->set_rules('Opis', 'Opis', 'required',
+        array('required'=>'Opis jest wymagany'));
+        $this->form_validation->set_rules('Cena', 'Cena', 'required',
+        array('required'=>'Cena jest wymagany'));
 
 
         if ($this->form_validation->run() == FALSE) {

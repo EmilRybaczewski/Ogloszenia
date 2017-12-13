@@ -8,19 +8,19 @@
                   $email = $this->session->userdata('Email');
                   ?>
             <label for="Imie">Imie</label></br>
-            <?php echo form_error('Imie'); ?>
+            <span class="text-danger"><?php echo form_error('Imie'); ?></span>
             <input type="text" name="Imie" value="<?= $imie ?>"> </br>
 
             <label for="Nazwisko">Nazwisko</label></br>
-            <?php echo form_error('Nazwisko'); ?>
+            <span class="text-danger"><?php echo form_error('Nazwisko'); ?></span>
             <input type="text" name="Nazwisko" value="<?= $nazwisko ?>"> </br>
 
             <label for="telefon">Numer telefonu</label></br>
-            <?php echo form_error('telefon'); ?>
+            <span class="text-danger"><?php echo form_error('telefon'); ?></span>
             <input type="text" name="telefon" value="<?= $telefon ?>"> </br>
 
             <label for="Email">Email</label></br>
-            <?php echo form_error('Email'); ?>
+            <span class="text-danger"><?php echo form_error('Email'); ?></span>
             <input type="email" name="Email" value="<?= $email ?>"> </br></br>
 
             <input class="btn btn-success" type="submit" value="submit">

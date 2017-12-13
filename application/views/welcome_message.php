@@ -21,7 +21,7 @@
                 <img src="http://www.12dzik.pl/images/Galeria/Jele%C5%84_Szl/151748_jelen-aka-drzewa-mgla.jpg" height="800" width="800" class="center-block">
                 <div class="carousel-caption">
                     <h3>Wyróżnione Pozycje</h3>
-                    <p>NAJLEPSZ Z NAJLEPSZYCH OGŁOSZENIA W SERWISIE</p>
+                    <p>NAJLEPSZE Z NAJLEPSZYCH OGŁOSZENIA W SERWISIE</p>
                 </div>
             </div>
             <?php foreach ($wyr as $oglosz) {
@@ -42,4 +42,3 @@
         </a>
         <a class="right carousel-control" href="#myCarousel" data-slide="next">
         </a>
-
