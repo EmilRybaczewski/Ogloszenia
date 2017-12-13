@@ -1,9 +1,4 @@
 <style>
-.hah {
-  margin-top:10;
-  margin-left: 43%;
-  margin-right: 43%;
-}
 </style>
 <center>
 <div id="cat" class="col-md-4 col-md-offset-4">
@@ -40,9 +35,7 @@
         <span class="input-group-addon">@</span>
         <input class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" type="text" name="email" value="<?php echo set_value('email'); ?>"></br>
     </div>
-    <div class="hah">
     <div><input class="btn btn-primary" type="submit" value="Submit" /></div>
-</div>
     </form>
 </div>
 </center>
