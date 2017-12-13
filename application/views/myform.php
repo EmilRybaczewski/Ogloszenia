@@ -1,7 +1,7 @@
 <style>
 </style>
 <center>
-<div id="cat" class="col-md-4 col-md-offset-4">
+<div class="col-md-4 col-md-offset-4">
 
     <?php echo form_open('Form'); ?>
 
@@ -46,6 +46,7 @@
    <span class="input-group-addon"><img src="https://png.icons8.com/harambe-goryl/androidL/20/000000"></span>
    <input class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" type="text"  name="telefon" value="<?php echo set_value('telefon'); ?>"></br>
     </div>
+    
     <label for='Email'>Adres Email</label></br>
     <span class="text-danger"><?php echo form_error('email'); ?></span>
     <div class="input-group">

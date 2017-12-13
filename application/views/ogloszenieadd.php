@@ -1,5 +1,5 @@
 <center>
-<div id="cat" class="col-md-4 col-md-offset-4 ">
+<div class="col-md-4 col-md-offset-4 ">
     <?php echo form_open_multipart('ogloszenia/dodaj'); ?>
 
         <label for="Tytul">Tytuł</label></br>
