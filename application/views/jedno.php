@@ -1,3 +1,11 @@
+
+<style>
+    .carousel .item img {
+        max-height: 360px;
+        width: auto;
+    }
+</style>
+
 <?php $main = $ogloszenie->Main_zdj; ?>
     <div class="col-md-10 col-md-offset-1">
     <div class="panel  panel-default">

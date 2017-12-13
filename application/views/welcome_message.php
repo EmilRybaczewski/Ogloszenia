@@ -1,4 +1,9 @@
-
+<style>
+    .carousel .item img {
+        max-height: 360px;
+        width: auto;
+    }
+</style>
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">

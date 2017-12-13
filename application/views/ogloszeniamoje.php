@@ -17,6 +17,10 @@
     .gunwo1 {
         height: 110px;
     }
+
+    .gunwo2 {
+        background-color: grey !important;
+    }
     p {
         display: inline;
     }
@@ -31,43 +35,43 @@
     <div class="col-md-4">
         <div class="panel  panel-default">
             <div class="panel-heading gunwo">
-                <h3 class="panel-title "><?= $tytul?></h3>
+                <h3 class="panel-title "><strong><?= $tytul?></strong></h3>
             </div>
             <a href="<?=base_url("index.php/Ogloszenia/jedno/".$id)?>" class="janusz">
                 <img src="<?=base_url($main)?>" height="200" width="200" class="center-block">
                 <div class="panel-body gunwo gunwo1">
-            <p>
-            <?=  form_open('ogloszenia/usun') ?>
-            <input type="hidden" name="id" value="<?= $id ?>">
-            <input class="btn btn-danger" type="submit" value="Usuń">
-            <?=   form_close() ?>
-            </p>
-            <p>
-            <?=  form_open('ogloszenia/edytuj') ?>
-            <input type="hidden" name="id" value="<?= $id ?>">
-            <input type="hidden" name="tytul" value="<?= $tytul ?>">
-            <input type="hidden" name="opis" value="<?= $opis ?>">
-            <input type="hidden" name="kategoria" value="<?= $kategoria ?>">
-            <input type="hidden" name="cena" value="<?= $cena ?>">
-            <input type="hidden" name="main" value="<?= $main ?>">
-            <input class="btn btn-success" type="submit" value="Edytuj">
-            <?=   form_close() ?>
-            </p>
-            <p>
-            <?=  form_open('ogloszenia/wyroznij') ?>
-            <input type="hidden" name="id" value="<?= $id ?>">
-            <input class="btn btn-info" type="submit" value="Wyróżnij">
-            <?=   form_close() ?>
-            </p>
-            <p>
-            <?=  form_open('ogloszenia/odwyroznij') ?>
-            <input type="hidden" name="id" value="<?= $id ?>">
-            <input class="btn btn-info" type="submit" value="Odwyróżnij">
-            <?=   form_close() ?>
-            </p>
+            <?=  anchor('ogloszenia/usun/'.$id, 'Usuń', 'class="btn btn-danger"') ?>
+            <?=  anchor('ogloszenia/edytuj/'.$id, 'Edytuj', 'class="btn btn-success"') ?>
+            <?=  anchor('ogloszenia/wyroznij/'.$id, 'Wyróżnij', 'class="btn btn-info"') ?>
+            <?=  anchor('ogloszenia/odwyroznij/'.$id, 'OdWyróżnij', 'class="btn btn-info"') ?>
                 </div>
             </a>
         </div>
     </div>
     <?php } ?>
+
+<?php   foreach ($wyg as $ogloszenie) {
+    $main = $ogloszenie->Main_zdj;
+    $id = $ogloszenie->Id;
+    $tytul = $ogloszenie->Tytul;
+    $opis = $ogloszenie->Opis;
+    $kategoria = $ogloszenie->Id_kategorii;
+    $cena = $ogloszenie->Cena; ?>
+    <div class="col-md-4">
+        <div class="panel  panel-default">
+            <div class="panel-heading gunwo2">
+                <h3 class="panel-title "><strong><?= $tytul?></strong> <?=anchor('ogloszenia/przedloz/'.$id ,'(głoszenie wygasło przedłuż je)', 'class="janusz"')?></h3>
+            </div>
+            <a href="<?=base_url("index.php/Ogloszenia/jedno/".$id)?>" class="janusz">
+                <img src="<?=base_url($main)?>" height="200" width="200" class="center-block">
+                <div class="panel-body gunwo2 gunwo1">
+                    <?=  anchor('ogloszenia/usun/'.$id, 'Usuń', 'class="btn btn-danger"') ?>
+                    <?=  anchor('ogloszenia/edytuj/'.$id, 'Edytuj', 'class="btn btn-success"') ?>
+                    <?=  anchor('ogloszenia/wyroznij/'.$id, 'Wyróżnij', 'class="btn btn-info"') ?>
+                    <?=  anchor('ogloszenia/odwyroznij/'.$id, 'OdWyróżnij', 'class="btn btn-info"') ?>
+                </div>
+            </a>
+        </div>
+    </div>
+<?php } ?>
 

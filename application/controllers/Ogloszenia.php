@@ -157,33 +157,12 @@ class Ogloszenia extends CI_Controller
         }
     }
 
-    public function edytuj()
+    public function edytuj($id)
     {
         $katy = $this->Category_model->cat();
         $arr['katy'] = $katy;
-        $id_ogloszenia = $this->input->post('id');
-        if (!$id_ogloszenia) {
-          redirect('Ogloszenia/mojeOgloszenia');
-        }
-        $ogloszenia = $this->Ogloszenia_model->getAnnoByIdUsera($id_ogloszenia);
+        $ogloszenia = $this->Ogloszenia_model->getAnnoById($id);
         $query['ogloszenia'] = $ogloszenia;
-
-
-        $tytul = $this->input->post('tytul');
-        $opis = $this->input->post('opis');
-        $cena = $this->input->post('cena');
-        $ma = $this->input->post('main');
-
-
-        $query['$id_ogloszenia'] = $id_ogloszenia;
-        $query['tytul'] = $tytul;
-        $query['opis'] = $opis;
-        $query['ma'] = $ma;
-        $query['id'] = $id_ogloszenia;
-
-        $query['cena'] = $cena;
-
-
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('Tytul', 'Tytul', 'required');
@@ -203,7 +182,7 @@ class Ogloszenia extends CI_Controller
 
 
             $array = array('Tytul' => $ty, 'Opis' => $op, 'Cena' => $ce);
-            if ($this->Ogloszenia_model->editAnno($id_ogloszenia, $array)==TRUE) {
+            if ($this->Ogloszenia_model->editAnno($id, $array)==TRUE) {
 
                 $this->mojeOgloszenia();
 
@@ -224,28 +203,22 @@ class Ogloszenia extends CI_Controller
 
         $id_usera = $this->session->userdata('Id_usera');
         $moje = $this->Ogloszenia_model->getAnnoByIdUsera($id_usera);
+        $wyg = $this->Ogloszenia_model->getExpiredAnnosByIdUsera($id_usera);
         $query['moje']=$moje;
+        $query['wyg']=$wyg;
 
         $this->load->view('templates/header', $arr);
         $this->load->view('ogloszeniamoje', $query);
         $this->load->view('templates/footer');
     }
 
-    public function usun()
+    public function usun($id)
     {
-        $katy = $this->Category_model->cat();
-        $arr['katy'] = $katy;
 
-        $id_usera = $this->session->userdata('Id_usera');
-        $moje = $this->Ogloszenia_model->getAnnoByIdUsera($id_usera);
-        $query['moje']=$moje;
-
-        $id = $this->input->post('id');
        if($this->Ogloszenia_model->deleteAnno($id)==TRUE)
        {
-           $this->load->view('templates/header', $arr);
-           $this->load->view('ogloszeniamoje', $query);
-           $this->load->view('templates/footer');
+           $this->load->view('delete_anno');
+           redirect('Ogloszenia/mojeOgloszenia');
        }
        else
        {
@@ -258,52 +231,39 @@ class Ogloszenia extends CI_Controller
      */
     public function przedloz($id)
     {
-        // todo
-    }
-
-    public function wyroznij()
-    {
         $katy = $this->Category_model->cat();
         $arr['katy'] = $katy;
 
-        $id_usera = $this->session->userdata('Id_usera');
-        $moje = $this->Ogloszenia_model->getAnnoByIdUsera($id_usera);
-        $query['moje']=$moje;
-
-        $id = $this->input->post('id');
-        if($this->Ogloszenia_model->HighlightAnno($id)==TRUE)
+        if($this->Ogloszenia_model->setNewExpiredDate($id)==TRUE)
         {
-            $this->load->view('templates/header', $arr);
-            if($success = TRUE) {
-                $this->load->view('wyroznienie_success');
-            }
-            $this->load->view('ogloszeniamoje', $query);
-            $this->load->view('templates/footer');
+            redirect('Ogloszenia/mojeOgloszenia');
         }
         else
         {
             echo 'WSPANIALE HEHEH';
         }
+
     }
 
-    public function odwyroznij()
+    public function wyroznij($id)
     {
-        $katy = $this->Category_model->cat();
-        $arr['katy'] = $katy;
+        if($this->Ogloszenia_model->HighlightAnno($id)==TRUE)
+        {
+                $this->load->view('wyroznienie_success');
+                redirect('Ogloszenia/mojeOgloszenia');
+        }
+        else
+        {
+            echo 'Coś poszło nie tak';
+        }
+    }
 
-        $id_usera = $this->session->userdata('Id_usera');
-        $moje = $this->Ogloszenia_model->getAnnoByIdUsera($id_usera);
-        $query['moje']=$moje;
-
-        $id = $this->input->post('id');
+    public function odwyroznij($id)
+    {
         if($this->Ogloszenia_model->deHighlightAnno($id)==TRUE)
         {
-            $this->load->view('templates/header', $arr);
-            if($success = TRUE) {
                 $this->load->view('odwyroznienie_success');
-            }
-            $this->load->view('ogloszeniamoje', $query);
-            $this->load->view('templates/footer');
+                redirect('Ogloszenia/mojeOgloszenia');
         }
         else
         {

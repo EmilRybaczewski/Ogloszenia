@@ -9,9 +9,8 @@
     }
 
 </style>
-
 <div class="czorny">
-    <h4 id="footer">THIS PROJECT WAS CREATED BY:</br>Emil Rybaczewski & Maciej Ziolkowski in 2017</h4>
+    <h4 id="footer">THIS PROJECT WAS CREATED BY:</br>Emil Rybaczewski & Maciej Ziolkowski in 2017 <a href="https://icons8.com">Icon pack by Icons8</a></h4>
 </div>
     </boody>
 </html>
