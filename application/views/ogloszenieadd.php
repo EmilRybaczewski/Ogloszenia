@@ -1,6 +1,6 @@
 <style>
     textarea{
-        resize: none;
+        resize:  none;
     }
 </style>
 <center>
