@@ -1,6 +1,6 @@
 <html>
 <head>
-        <title>Ogloszenia - Emil i Maciej</title>
+        <title>Ogloszenia - Emil, Maciej i Lukasz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="<?= base_url();?>/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -10,7 +10,7 @@
     body {
         background-color: snow;
         background-image: url("https://i.imgur.com/8aUfaQj.png?1");
-        margin-top: 120px;
+        margin-top: 90px;
         margin-bottom: 200px;
     }
 
@@ -107,29 +107,18 @@
             <div class="navbar-fixed-top januszek">
  <?php   if($this->session->userdata('username') == ''){ ?>
      <div class="pull-right">
-         <?= anchor('Logginc/', 'Sing in', 'class="text-bold"')?> or
-         <?= anchor('Form/index', 'Sing up')?>
+         <?= anchor('Logginc/', 'Sign in', 'class="text-bold"')?> or
+         <?= anchor('Form/index', 'Sign up')?>
      </div>
  <?php  } else { ?>
  <div class="pull-right">
-     <?php $name = $this->session->userdata('username'); ?>
-     <div class="btn-group">
-         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             <?= anchor('Logginc/menago', $name); ?> <span class="caret"></span>
-         </button>
-         <ul class="dropdown-menu">
-             <li> <?= anchor('Ogloszenia', 'Wszystkie ogloszenia') ?> </li>
-             <li><?= anchor('Ogloszenia/mojeOgloszenia', 'Moje Ogłoszenia')?></li>
-             <li><?= anchor('Ogloszenia/dodaj', 'Dodaj ogłoszenie')?></li>
-             <li><?= anchor('Wiadomosci/moje', 'Moje wiadomości')?></li>
-             <li><?= anchor('Logginc/wedit', 'Edytuj Konto')?></li>
-             <li><?= anchor('Logginc/usun', 'Usuń Konto')?></li>
-         </ul>
-     </div>
-     <?= anchor('Logginc/won', 'Sing out', 'class="btn btn-success"')?>
+     <?php $name = $this->session->userdata('username');
+     echo anchor('Logginc/menago', $name);
+     ?>
+     <?= anchor('Wiadomosci/moje', 'Moje wiadomości', 'class="btn btn-warning"')?>
+     <?= anchor('Logginc/won', 'Sign out', 'class="btn btn-success"')?>
  </div>
 <?php }?>
 
         </div>
     </div>
-
