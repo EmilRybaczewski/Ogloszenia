@@ -1,3 +1,8 @@
+<style>
+    textarea{
+        resize: none;
+    }
+</style>
 <center>
 <div class="col-md-4 col-md-offset-4 ">
     <?php echo form_open_multipart('ogloszenia/dodaj'); ?>
@@ -8,11 +13,11 @@
 
         <label for="Opis">Opis</label></br>
       <span class="text-danger"><?php echo form_error('Opis'); ?></span>
-        <textarea name="Opis" style="resize:none" cols="40" rows="5"></textarea></br>
+        <textarea name="Opis" class="form-control" cols="40" rows="5"></textarea></br>
 
         <label for="Kategoria">Kategoria</label></br>
         <span class="text-danger"><?php echo form_error('Kategoria'); ?></span>
-        <select name="Kategoria">
+        <select class="form-control" name="Kategoria">
             <option value="0"></option>
             <?php foreach ($kat as $Cat){
                 $opcja = $Cat->Id_kategorii;
