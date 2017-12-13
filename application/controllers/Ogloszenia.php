@@ -40,17 +40,6 @@ class Ogloszenia extends CI_Controller
         $arr['katy'] = $katy;
         $ogloszenia = $this->Ogloszenia_model->getAllAnnos();
         $query['ogloszenia']= $ogloszenia;
-        /* todo tutaj:
-         *  - stworzyc widok i go wyswietlic
-         *  - przekazac do niego dane z $ogloszenia i je w tym widoku wyswietlic petla foreach
-         *  - klikniecie na dane ogloszenie przenosi do strony OgloszeniaWyswietlanie/jedno/id
-         *  - dodac przeszukiwanie ogloszen (filtrowanie)
-         *  - dodac ewentualnie podzial ogloszen na strony
-         */
-
-        // przykladowy forach do wyswietlenia produktow, ktory powinien byc prawdopodobnie w widoku, w jakiejs tabelce, col-md-3, itp
-            // itd, itd
-
 
         $this->load->view('templates/header', $arr);
         $this->load->view('ogloszenia', $query);
@@ -66,7 +55,6 @@ class Ogloszenia extends CI_Controller
         $katy = $this->Category_model->cat();
         $arr['katy'] = $katy;
         $ogloszenie = $ogloszenia = $this->Ogloszenia_model->getAnnoById($id_ogloszenia);
-        // jesli nie ma ogloszenia, to wyswietlamy info, ze nie ma
         if (!$ogloszenie) {
             return "Brak";
         }
@@ -76,23 +64,9 @@ class Ogloszenia extends CI_Controller
         $query['parametry_ogloszenia']=$parametry_ogloszenia;
         $query['zdjecia_byid']=$zdjecia_byid;
 
-        // przykładowe wyswietlanie danych ogloszenia - trzeba to przeniesc do widoku
-       // echo $ogloszenie->Tytul; // itd
-       // echo "<hr>";
-        // przykladowe wyswietlenie parametrow ogloszenia, tez przeniesc do widoku
-      //  foreach ($parametry_ogloszenia as $parametr) {
-        //    echo "<b>{$parametr->Atrybut}</b> - {$parametr->Wartosc} <br>";
-      //  }
-
-
         $this->load->view('templates/header', $arr);
         $this->load->view('jedno', $query);
         $this->load->view('templates/footer');
-
-        /* todo tutaj:
-         * - ładniejszya komunikat, jeśli nie ma ogłoszenia, jakiś layout, widok (zamiast samego return "brak");
-         * - stworzyc widok do wyswietlani produktu oraz jego szczegolow
-         */
     }
 
     /**
