@@ -258,7 +258,7 @@ class Ogloszenia extends CI_Controller
         // todo
     }
 
-    public function wyroznij($success = null)
+    public function wyroznij()
     {
         $katy = $this->Category_model->cat();
         $arr['katy'] = $katy;
@@ -283,7 +283,7 @@ class Ogloszenia extends CI_Controller
         }
     }
 
-    public function odwyroznij($success = null)
+    public function odwyroznij()
     {
         $katy = $this->Category_model->cat();
         $arr['katy'] = $katy;
@@ -293,10 +293,10 @@ class Ogloszenia extends CI_Controller
         $query['moje']=$moje;
 
         $id = $this->input->post('id');
-        if($this->Ogloszenia_model->HighlightAnno($id)==TRUE)
+        if($this->Ogloszenia_model->deHighlightAnno($id)==TRUE)
         {
             $this->load->view('templates/header', $arr);
-            if($success == TRUE) {
+            if($success = TRUE) {
                 $this->load->view('odwyroznienie_success');
             }
             $this->load->view('ogloszeniamoje', $query);

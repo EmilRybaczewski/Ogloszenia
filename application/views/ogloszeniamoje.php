@@ -49,6 +49,10 @@
             <input type="hidden" name="id" value="<?= $id ?>">
             <input class="btn btn-info" type="submit" value="Wyróżnij">
             <?=   form_close() ?>
+            <?=  form_open('ogloszenia/odwyroznij') ?>
+            <input type="hidden" name="id" value="<?= $id ?>">
+            <input class="btn btn-info" type="submit" value="Odwyróżnij">
+            <?=   form_close() ?>
         </div>
         <?php
     }
