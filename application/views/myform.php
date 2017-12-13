@@ -16,14 +16,14 @@
     <span class="text-danger"><?php echo form_error('password');?></span>
     <div class="input-group">
     <span class="input-group-addon"><img src="https://png.icons8.com/hasło/win10/17/000000"></span>
-    <input class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" type="text"  name="password" value="<?php echo set_value('password'); ?>"></br>
+    <input class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" type="password"  name="password" value="<?php echo set_value('password'); ?>"></br>
     </div>
 
     <label for='Passconf'>Potwierdzenie Hasla</label></br>
     <span class="text-danger"><?php echo form_error('passconf');?></span>
     <div class="input-group">
     <span class="input-group-addon"><img src="https://png.icons8.com/hasło/ios11/17/000000"></span>
-    <input class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" type="text"  name="passconf" value="<?php echo set_value('passconf'); ?>"></br>
+    <input class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" type="password"  name="passconf" value="<?php echo set_value('passconf'); ?>"></br>
     </div>
 
     <label for='Imie'>Imie</label></br>
@@ -46,7 +46,7 @@
    <span class="input-group-addon"><img src="https://png.icons8.com/harambe-goryl/androidL/20/000000"></span>
    <input class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" type="text"  name="telefon" value="<?php echo set_value('telefon'); ?>"></br>
     </div>
-    
+
     <label for='Email'>Adres Email</label></br>
     <span class="text-danger"><?php echo form_error('email'); ?></span>
     <div class="input-group">
