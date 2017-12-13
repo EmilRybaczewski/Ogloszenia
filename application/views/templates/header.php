@@ -99,7 +99,7 @@
                             ?>
                             <li><a href="<?=base_url("index.php/Ogloszenia/kategorie/".$id)?>"><?= $cat->Nazwa ?></a></li>
                         <?php } ?>
-                        <li> <?= anchor('Ogloszenia', 'wszystkie ogloszenia') ?> </li>
+                        <li> <?= anchor('Ogloszenia', 'Wszystkie Ogloszenia') ?> </li>
                     </ul>
                 </div>
     </nav>
