@@ -11,9 +11,16 @@
     .jan:hover {
         box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
     }
+    .gunwo {
+        background-color: floralwhite !important;
+    }
+    .gunwo1 {
+        height: 110px;
+    }
+    p {
+        display: inline;
+    }
 </style>
-<div class="row">
-
     <?php   foreach ($moje as $ogloszenie) {
         $main = $ogloszenie->Main_zdj;
         $id = $ogloszenie->Id;
@@ -21,21 +28,21 @@
         $opis = $ogloszenie->Opis;
         $kategoria = $ogloszenie->Id_kategorii;
         $cena = $ogloszenie->Cena; ?>
-
-        <div id="cat" class="col-md-3 jan">
+    <div class="col-md-4">
+        <div class="panel  panel-default">
+            <div class="panel-heading gunwo">
+                <h3 class="panel-title "><?= $tytul?></h3>
+            </div>
             <a href="<?=base_url("index.php/Ogloszenia/jedno/".$id)?>" class="janusz">
                 <img src="<?=base_url($main)?>" height="200" width="200" class="center-block">
-
-                <?php    echo "<h1>";
-                echo $tytul;
-                echo "</h1>";
-                echo "<p>Cena ".$cena." Zł</p>" ;
-                echo "</h1>";?>
-            </a>
+                <div class="panel-body gunwo gunwo1">
+            <p>
             <?=  form_open('ogloszenia/usun') ?>
             <input type="hidden" name="id" value="<?= $id ?>">
             <input class="btn btn-danger" type="submit" value="Usuń">
             <?=   form_close() ?>
+            </p>
+            <p>
             <?=  form_open('ogloszenia/edytuj') ?>
             <input type="hidden" name="id" value="<?= $id ?>">
             <input type="hidden" name="tytul" value="<?= $tytul ?>">
@@ -45,17 +52,22 @@
             <input type="hidden" name="main" value="<?= $main ?>">
             <input class="btn btn-success" type="submit" value="Edytuj">
             <?=   form_close() ?>
+            </p>
+            <p>
             <?=  form_open('ogloszenia/wyroznij') ?>
             <input type="hidden" name="id" value="<?= $id ?>">
             <input class="btn btn-info" type="submit" value="Wyróżnij">
             <?=   form_close() ?>
+            </p>
+            <p>
             <?=  form_open('ogloszenia/odwyroznij') ?>
             <input type="hidden" name="id" value="<?= $id ?>">
             <input class="btn btn-info" type="submit" value="Odwyróżnij">
             <?=   form_close() ?>
+            </p>
+                </div>
+            </a>
         </div>
-        <?php
-    }
-    ?>
-    </a>
-</div>
+    </div>
+    <?php } ?>
+

@@ -1,7 +1,5 @@
 <?php
-echo $ogloszenie->Tytul; // itd
-echo "<hr>";
-// przykladowe wyswietlenie parametrow ogloszenia, tez przeniesc do widoku
+echo $ogloszenie->Tytul;
 foreach ($parametry_ogloszenia as $parametr) {
     echo "<b>{$parametr->Atrybut}</b> - {$parametr->Wartosc} <br>";
 }
