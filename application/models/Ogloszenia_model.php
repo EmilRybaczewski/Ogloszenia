@@ -188,4 +188,12 @@ class Ogloszenia_model extends CI_Model
         $is_highlighted = $this->db->update('ogloszenia');
         return $is_highlighted;
     }
+
+    public function deHighlightAnno($id_ogloszenia)
+    {
+        $this->db->set('Wyroznienie',  FALSE);
+        $this->db->where('Id', $id_ogloszenia);
+        $de_highlighted = $this->db->update('ogloszenia');
+        return $de_highlighted;
+    }
 }

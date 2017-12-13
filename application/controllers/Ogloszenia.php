@@ -271,8 +271,33 @@ class Ogloszenia extends CI_Controller
         if($this->Ogloszenia_model->HighlightAnno($id)==TRUE)
         {
             $this->load->view('templates/header', $arr);
-            if ($success === "success") {
+            if($success = TRUE) {
                 $this->load->view('wyroznienie_success');
+            }
+            $this->load->view('ogloszeniamoje', $query);
+            $this->load->view('templates/footer');
+        }
+        else
+        {
+            echo 'WSPANIALE HEHEH';
+        }
+    }
+
+    public function odwyroznij($success = null)
+    {
+        $katy = $this->Category_model->cat();
+        $arr['katy'] = $katy;
+
+        $id_usera = $this->session->userdata('Id_usera');
+        $moje = $this->Ogloszenia_model->getAnnoByIdUsera($id_usera);
+        $query['moje']=$moje;
+
+        $id = $this->input->post('id');
+        if($this->Ogloszenia_model->HighlightAnno($id)==TRUE)
+        {
+            $this->load->view('templates/header', $arr);
+            if($success == TRUE) {
+                $this->load->view('odwyroznienie_success');
             }
             $this->load->view('ogloszeniamoje', $query);
             $this->load->view('templates/footer');
