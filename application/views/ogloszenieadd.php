@@ -8,7 +8,7 @@
 
         <label for="Opis">Opis</label></br>
       <span class="text-danger"><?php echo form_error('Opis'); ?></span>
-        <textarea name="Opis" style="resize:none" cols="40" rows="5"></textarea></br>
+        <textarea class="form-control" name="Opis" style="resize:none" cols="40" rows="5"></textarea></br>
 
         <label for="Kategoria">Kategoria</label></br>
         <span class="text-danger"><?php echo form_error('Kategoria'); ?></span>
