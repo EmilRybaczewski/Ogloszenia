@@ -6,7 +6,9 @@
     }
 </style>
 <div class="col-md-8 col-md-offset-2 col-xs-12 panel panel-default karol">
-<?php $main = $ogloszenie->Main_zdj; ?>
+<?php $main = $ogloszenie->Main_zdj;
+    $id_u = $kontakt->Id_usera;
+    ?>
     <div class="col-xs-12">
     <div class="panel  panel-default">
     <div class="panel-heading gunwo">
@@ -51,14 +53,14 @@
 <?php foreach ($parametry_ogloszenia as $parametr) { ?>
                     <b>  <?= $parametr->Atrybut ?>:</b> <?=$parametr->Wartosc?></br>
 <?php } ?></p>
-            <h2 class="panel-title"><b>Cena: <?= $kontakt->Cena ?>Zł</b></h2>
+            <h2 class="panel-title"><b>Cena: <?= $kontakt->Cena ?>Zł</b></h2><?= anchor('ogloszenia/kupuj', 'Kup Teraz', 'class="btm btn-success disabled"')  ?>
         </div>
     </div>
     </div>
     <div class="col-xs-12">
         <div class="panel panel-default">
             <div class="panel-heading gunwo text-center"><h2 class="panel-title"><b>Kontakt</b></h2></div>
-            <div class="panel-body"><p><b>Dane Osobowe:  <?= $kontakt->Imie ?> <?= $kontakt->Nazwisko ?></br>Email: <?= $kontakt->Email?></br>Telefon: <?= $kontakt->telefon?></br></b></p></div>
+            <div class="panel-body"><p><b>Dane Osobowe:  <?= $kontakt->Imie ?> <?= $kontakt->Nazwisko ?></br>Email: <?= $kontakt->Email?></br>Telefon: <?= $kontakt->telefon?></br></b><?= anchor('wiadomosci/nowa_wiadomosc/'.$id_u, 'Wyślij wiadomość')?></p></div>
         </div>
     </div>
 </div>

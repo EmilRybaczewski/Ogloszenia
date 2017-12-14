@@ -277,4 +277,17 @@ class Ogloszenia extends CI_Controller
         $this->load->view('templates/footer');
 
     }
+
+    public function kup($id)
+    {
+        if($this->Ogloszenia_model->kupuj($id)==TRUE)
+        {
+            $this->load->view('kup');
+            redirect('Ogloszenia/mojeOgloszenia');
+        }
+        else
+        {
+            echo 'WSPANIALE HEHEH';
+        }
+    }
 }

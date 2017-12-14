@@ -195,11 +195,11 @@ class Ogloszenia_model extends CI_Model
         return $is_highlighted;
     }
 
-    public function deHighlightAnno($id_ogloszenia)
+  /**  public function kupuj($id_ogloszenia, $array)
     {
-        $this->db->set('Wyroznienie',  FALSE);
-        $this->db->where('Id', $id_ogloszenia);
-        $de_highlighted = $this->db->update('ogloszenia');
-        return $de_highlighted;
-    }
+        $this->db->where('ogloszenia', $id_ogloszenia);
+        $this->db->insert('ogloszenia', $array);
+        $id = $this->db->insert_id();
+        return $this->setNewExpiredDate($id);
+    } */
 }
