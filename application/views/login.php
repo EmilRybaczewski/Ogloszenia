@@ -15,7 +15,7 @@
     <span class="text-danger"><?= form_error('password');?></span>
 
 
-    <input class="btn btn-primary" type="submit" value="Login"></br>
+    <input class="btn btn-primary" type="submit" value="Zaloguj"></br>
     <?= '<label class="text-danger">'.$this->session->flashdata("error").'</label>'; ?>
     </form>
 
