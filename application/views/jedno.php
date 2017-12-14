@@ -53,7 +53,7 @@
 <?php foreach ($parametry_ogloszenia as $parametr) { ?>
                     <b>  <?= $parametr->Atrybut ?>:</b> <?=$parametr->Wartosc?></br>
 <?php } ?></p>
-            <h2 class="panel-title"><b>Cena: <?= $kontakt->Cena ?>Zł</b></h2><?= anchor('ogloszenia/kupuj', 'Kup Teraz', 'class="btm btn-success disabled"')  ?>
+            <h2 class="panel-title"><b>Cena: <?= $kontakt->Cena ?>Zł</b></h2> <?php anchor('ogloszenia/kupuj', 'Kup Teraz', 'class="btm btn-success disabled"')  ?>
         </div>
     </div>
     </div>
