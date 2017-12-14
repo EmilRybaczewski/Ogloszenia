@@ -5,9 +5,9 @@
         width: auto;
     }
 </style>
-
+<div class="col-md-8 col-md-offset-2 col-xs-12 panel panel-default karol">
 <?php $main = $ogloszenie->Main_zdj; ?>
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-xs-12">
     <div class="panel  panel-default">
     <div class="panel-heading gunwo">
 <div class="text-center"><h1 class="panel-title"><b><?= $ogloszenie->Tytul ?></b></h1></div>
@@ -30,14 +30,35 @@
         </div>
 
     <?php } ?>
+    </div>
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
     </a>
     <a class="right carousel-control" href="#myCarousel" data-slide="next">
     </a>
     </div>
-    <div class="panel-body gunwo gunwo1">
-    <h2><?= $ogloszenie->Opis ?></h2>
-<?php foreach ($parametry_ogloszenia as $parametr) {
-    echo "<b>{$parametr->Atrybut}</b> - {$parametr->Wartosc} <br>";
-} ?> </div>
-
+    </div>
+    </div>
+        <div class="col-xs-12">
+        <div class="panel panel-default text-center">
+        <div class="panel-heading gunwo"><h2 class="panel-title"><b>Opis</b></h2></div>
+    <div class="panel-body"><p><?= $ogloszenie->Opis ?></p></div>
+    </div>
+</div>
+    <div class="col-xs-12">
+    <div class="panel panel-default">
+        <div class="panel-heading gunwo text-center"><h2 class="panel-title"><b>Szczegóły</b></h2></div>
+        <div class="panel-body"><p>
+<?php foreach ($parametry_ogloszenia as $parametr) { ?>
+                    <b>  <?= $parametr->Atrybut ?>:</b> <?=$parametr->Wartosc?></br>
+<?php } ?></p>
+            <h2 class="panel-title"><b>Cena: <?= $kontakt->Cena ?>Zł</b></h2>
+        </div>
+    </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading gunwo text-center"><h2 class="panel-title"><b>Kontakt</b></h2></div>
+            <div class="panel-body"><p><b>Dane Osobowe:  <?= $kontakt->Imie ?> <?= $kontakt->Nazwisko ?></br>Email: <?= $kontakt->Email?></br>Telefon: <?= $kontakt->telefon?></br></b></p></div>
+        </div>
+    </div>
+</div>

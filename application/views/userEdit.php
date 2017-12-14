@@ -1,6 +1,5 @@
 <center>
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+    <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1 panel panel-default karol">
             <?php echo form_open('Logginc/edit'); ?>
             <?php $imie = $this->session->userdata('Imie');
                   $nazwisko = $this->session->userdata('Nazwisko');
@@ -37,5 +36,4 @@
             <input class="btn btn-success" type="submit" value="Zatwierdz">
             <?php echo form_close(); ?>
         </div>
-    </div>
 </center>

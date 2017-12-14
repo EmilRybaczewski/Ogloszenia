@@ -4,7 +4,7 @@
     }
 </style>
 <center>
-<div class="col-md-4 col-md-offset-4 ">
+    <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1 panel panel-default karol">
     <?php echo form_open_multipart('ogloszenia/dodaj'); ?>
 
         <label for="Tytul">Tytuł</label></br>
@@ -47,7 +47,7 @@
         <span class="text-danger"><?php echo form_error('zdjecie'); ?></span>
         <div class="input-group">
         <span class="input-group-addon"><img src="https://png.icons8.com/ramka/win8/17/000000"></span>
-        <input type="file" class="form-control" name="zdjecie" size="20" >
+        <input type="file" class="form-control" name="zdjecie" size="20" multiple>
       </div>
 
         <input class="btn btn-success" type="submit" value="Zatwierdz">

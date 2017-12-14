@@ -1,5 +1,4 @@
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
+<div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1 panel panel-default karol">
         <h1>Moje wiadomości</h1>
         <?= anchor("Wiadomosci/nowa_wiadomosc", 'Nowa wiadomość', 'class="btn btn-primary btn-lg pull-right"') ?>
         Najnowsze wiadomości pojawiają na dole
@@ -40,4 +39,3 @@
         }
         ?>
     </div>
-</div>

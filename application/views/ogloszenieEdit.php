@@ -1,12 +1,11 @@
 <center>
-<div class="row">
     <?php
         $id = $ogloszenia->Id;
         $Tytul = $ogloszenia->Tytul;
         $Opis = $ogloszenia->Opis;
         $Cena = $ogloszenia->Cena;
     ?>
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1 panel panel-default karol">
     <?php echo form_open('ogloszenia/edytuj'); ?>
       <input type="hidden" name="id" value="<?= $id ?>"> </br>
     <label for="Tytul">Tytuł</label></br>
@@ -31,6 +30,5 @@
 
     <input class="btn btn-success" type="submit" value="Zatwierdz">
 <?php echo form_close(); ?>
-    </div>
 </div>
 </center>

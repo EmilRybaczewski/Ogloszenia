@@ -38,6 +38,12 @@ class Ogloszenia_model extends CI_Model
         return $this->db->get('ogloszenia')->first_row();
     }
 
+    public function getviewAnnoById($id)
+    {
+        $this->db->where('Id', $id);
+        return $this->db->get('widok')->first_row();
+    }
+
 
     /**
      * Zwraca wszystkie niewygaśnięte ogłoszenia z danej kategorii ($id_kategorii)

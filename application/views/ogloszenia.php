@@ -11,15 +11,9 @@
     .jan:hover {
         box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
     }
-    .gunwo {
-        background-color: floralwhite !important;
-    }
-    .gunwo1 {
-       height: 110px;
-    }
 
 </style>
-<div class="container-fluid">
+<div class="container-fluid karol">
 <?php   foreach ($ogloszenia as $ogloszenie) {
     $main = $ogloszenie->Main_zdj;
     $id = $ogloszenie->Id; ?>
@@ -33,7 +27,8 @@
             <div class="panel-body gunwo gunwo1">
 
     <?php
-    echo "<p>".$ogloszenie->Opis."</p>";
+    echo "<p>".$ogloszenie->Cena."Zł </p></br>";
+    echo "<h5>Kliknij po więcej informacji</h5>";
     ?>
             </div>
   </a>

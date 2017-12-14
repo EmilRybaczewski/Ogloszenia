@@ -1,7 +1,6 @@
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
+
+    <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1 panel panel-default karol">
         <h1>Wysyłanie wiadomości</h1>
-        <hr>
         <?= form_open("Wiadomosci/wyslij/{$id_usera_do_ktorego_wyslac}"); ?>
 
         <?php if ($pokaz_odbiorce == false) { ?>
@@ -19,9 +18,8 @@
         <?php } ?>
 
         <textarea name="wiadomosc" class="form-control" rows="3"
-                  placeholder="Twoja wiadomosc. Prosimy używać wulgaryzmów 💩"></textarea>
+                  placeholder="Twoja wiadomosc. Prosimy używać wulgaryzmów "></textarea>
         <button type="submit" class="btn btn-default">Wyślij</button>
         <?= form_close() ?>
 
     </div>
-</div>

@@ -58,12 +58,14 @@ class Ogloszenia extends CI_Controller
         if (!$ogloszenie) {
             return "Brak";
         }
+
         $parametry_ogloszenia = $this->Parametry_ogloszenia_model->getParameters($id_ogloszenia);
         $zdjecia_byid = $this->Zdjecia_model->getByIdOgloszenia($id_ogloszenia);
         $query['ogloszenie']=$ogloszenie;
         $query['parametry_ogloszenia']=$parametry_ogloszenia;
         $query['zdjecia_byid']=$zdjecia_byid;
-
+        $kontakt = $this->Ogloszenia_model->getviewAnnoById($id_ogloszenia);
+        $query['kontakt']=$kontakt;
         $this->load->view('templates/header', $arr);
         $this->load->view('jedno', $query);
         $this->load->view('templates/footer');
@@ -95,8 +97,8 @@ class Ogloszenia extends CI_Controller
         array('required'=>'Opis jest wymagany'));
         $this->form_validation->set_rules('Kategoria', 'Kategoria', 'required',
         array('required'=>'Kategoria jest wymagana'));
-        $this->form_validation->set_rules('Cena', 'Cena', 'required',
-        array('required'=>'Cena jest wymagana'));
+        $this->form_validation->set_rules('Cena', 'Cena', 'required|numeric',
+        array('required'=>'Cena jest wymagana', 'numeric'=>'tylko liczby'));
 
       //  $this->form_validation->set_rules('zdjecie', 'zdjecie', 'required');
 
@@ -125,9 +127,8 @@ class Ogloszenia extends CI_Controller
             $array = array('Tytul'=>$ty, 'Opis'=>$op, 'Cena'=>$ce, 'Id_kategorii'=>$ka, 'Id_usera'=>$us, 'Main_zdj'=> './zdjecia/'.$file_name);
            if($this->Ogloszenia_model->addNewAnno($array))
            {
-               $this->load->view('templates/header', $arr);
-               $this->load->view('formsuccess');
-               $this->load->view('templates/footer');
+
+               $this->mojeOgloszenia();
            }
            else
            {
@@ -185,7 +186,14 @@ class Ogloszenia extends CI_Controller
 
         $id_usera = $this->session->userdata('Id_usera');
         $moje = $this->Ogloszenia_model->getAnnoByIdUsera($id_usera);
+        if (!$moje) {
+            $this->load->view('brak_ogloszen');
+            $this->dodaj();
+        }
         $wyg = $this->Ogloszenia_model->getExpiredAnnosByIdUsera($id_usera);
+        if (!$wyg) {
+            return "Brak";
+        }
         $query['moje']=$moje;
         $query['wyg']=$wyg;
 

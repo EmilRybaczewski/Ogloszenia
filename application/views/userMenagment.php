@@ -11,9 +11,7 @@
     }
 
 </style>
-<div class="row">
-    <div class="container-fluid">
-        <div class="col-md-2 col-md-offset-5 janekk">
+<div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1 panel panel-default karol">
             <div>
                 <ul class="list-unstyled">
 <li><?= anchor('Ogloszenia/dodaj', 'Dodaj ogłoszenie')?></li>
@@ -23,5 +21,3 @@
                 </ul>
             </div>
         </div>
-    </div>
-</div>

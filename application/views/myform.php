@@ -1,11 +1,10 @@
-<style>
-</style>
+
 <center>
-<div class="col-md-4 col-md-offset-4">
+    <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1 panel panel-default karol">
 
     <?php echo form_open('Form'); ?>
 
-    <label for='Username'>Nazwa Uzytkownika</label></br>
+    <label for='Username'>Login</label></br>
     <span class="text-danger"><?php echo form_error('username');?></span>
     <div class="input-group">
     <span class="input-group-addon"><img src="https://png.icons8.com/menedżer/win8/17/000000"></span>
@@ -53,7 +52,7 @@
         <span class="input-group-addon">@</span>
         <input class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" type="text" name="email" value="<?php echo set_value('email'); ?>"></br>
     </div></br>
-    <div><input class="btn btn-primary btn-block" type="submit" value="Zatwierdz"></div>
+    <div><input class="btn btn-primary btn-lg" type="submit" value="Zatwierdz"></div>
     </form>
 </div>
 </center>

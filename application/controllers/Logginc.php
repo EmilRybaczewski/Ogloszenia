@@ -38,13 +38,13 @@ class Logginc extends CI_Controller
     {
         $katy = $this->Category_model->cat();
         $arr['katy'] = $katy;
-        $this->form_validation->set_rules('login', 'Login', 'trim|required|min_length[2]|is_unique[usery.Imie]');
+        $this->form_validation->set_rules('login', 'login', 'trim|required|min_length[2]|is_unique[usery.Imie]');
         $this->form_validation->set_rules('password', 'password', 'required');
 
         if ($this->form_validation->run())
         {
             $login = $this->input->post('login');
-            $haslo = $this->input->post('password');
+            $haslo = md5($this->input->post('password'));
 
             $login_user = $this->Usery_model->loginUser($login, $haslo);
             if ($login_user) {
@@ -83,6 +83,7 @@ class Logginc extends CI_Controller
 
     public function won()
     {
+
         $katy = $this->Category_model->cat();
         $arr['katy'] = $katy;
         $this->session->unset_userdata('username');
@@ -140,30 +141,28 @@ class Logginc extends CI_Controller
         }
     }
 
+
     public function usun()
     {
         $katy = $this->Category_model->cat();
         $arr['katy'] = $katy;
         $id_usera = $this->session->userdata('Id_usera');
 
-       if ($this->Usery_model->deleteUser($id_usera)==TRUE){
+            if ($this->Usery_model->deleteUser($id_usera) == TRUE) {
 
-           $this->session->unset_userdata('username');
-           $this->session->unset_userdata('Id_usera');
-           $this->session->unset_userdata('Imie');
-           $this->session->unset_userdata('Nazwisko');
-           $this->session->unset_userdata('Email');
-           $this->session->unset_userdata('telefon');
-           $this->session->unset_userdata('Login');
-           $this->load->view('templates/header', $arr);
-           redirect('Welcome');
-           $this->load->view('templates/footer');
-       }
-       else
-       {
-            echo "somfink no gejm";
-       }
-
+                $this->session->unset_userdata('username');
+                $this->session->unset_userdata('Id_usera');
+                $this->session->unset_userdata('Imie');
+                $this->session->unset_userdata('Nazwisko');
+                $this->session->unset_userdata('Email');
+                $this->session->unset_userdata('telefon');
+                $this->session->unset_userdata('Login');
+                $this->load->view('templates/header', $arr);
+                redirect('Welcome');
+                $this->load->view('templates/footer');
+            } else {
+                echo "somfink no gejm";
+            }
     }
 
     public function menago()

@@ -41,7 +41,7 @@ class Form extends CI_Controller {
         $arr['katy'] = $katy;
 
         $Login = $this->input->post('username');
-        $Haslo= $this->input->post('password');
+        $Haslo=  md5($this->input->post('password'));
         $Email = $this->input->post('email');
         $Imie = $this->input->post('imie');
         $Nazwisko = $this->input->post('nazwisko');
@@ -63,3 +63,4 @@ class Form extends CI_Controller {
     }
 
 }
+

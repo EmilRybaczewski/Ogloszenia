@@ -7,6 +7,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
+
     body {
         background-color: snow;
         background-image: url("https://i.imgur.com/8aUfaQj.png?1");
@@ -14,13 +15,35 @@
         margin-bottom: 200px;
     }
 
+    .karol {
+        padding-top: 20px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+
+    }
+
+    .btn-default{
+    background-color:  rgb(238, 238, 238 );
+    }
+    a {
+        color: black;
+    }
+    .dropdown-menu{
+        background-color:  rgb(238, 238, 238 );
+    }
+
+    .btn-default:hover{
+        background-color:  white;
+    }
+
     .januszek {
-        background-color: floralwhite !important;
+        background-color: rgb(238, 238, 238 ) !important;
         height: 35px;
 
     }
     .gunwo {
-        background-color: floralwhite !important;
+        background-color: rgb(238, 238, 238 )!important;
     }
 
     nav {
@@ -29,7 +52,7 @@
         color:black !important;
     }
     .navbar-default {
-        background-color: floralwhite;
+        background-color: rgb(238, 238, 238 );
         border-color: black;
     }
 
@@ -99,7 +122,6 @@
                             ?>
                             <li><a href="<?=base_url("index.php/Ogloszenia/kategorie/".$id)?>"><?= $cat->Nazwa ?></a></li>
                         <?php } ?>
-                        <li> <?= anchor('Ogloszenia', 'Wszystkie Ogloszenia') ?> </li>
                     </ul>
                 </div>
     </nav>
@@ -107,8 +129,8 @@
             <div class="navbar-fixed-top januszek">
  <?php   if($this->session->userdata('username') == ''){ ?>
      <div class="pull-right" style="margin: 5">
-         <?= anchor('Logginc/', 'Logowanie', 'class="text-bold"')?> or
-         <?= anchor('Form/index', 'Zarejestruj')?>
+         <?= anchor('Logginc/', 'Logowanie', 'class="btn btn-default"')?> or
+         <?= anchor('Form/index', 'Zarejestruj', 'class="btn btn-default"' )?>
      </div>
  <?php  } else { ?>
  <div class="pull-right">
