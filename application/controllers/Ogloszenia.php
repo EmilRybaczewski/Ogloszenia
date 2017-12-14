@@ -191,9 +191,6 @@ class Ogloszenia extends CI_Controller
             $this->dodaj();
         }
         $wyg = $this->Ogloszenia_model->getExpiredAnnosByIdUsera($id_usera);
-        if (!$wyg) {
-            return "Brak";
-        }
         $query['moje']=$moje;
         $query['wyg']=$wyg;
 
