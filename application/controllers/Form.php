@@ -59,11 +59,11 @@ class Form extends CI_Controller {
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
             $subject='Potwierdzenie rejestracji';
-            $message='Konto o podanym adresie zarejestrowało się w naszym serwisie. Jeśli byłeś to Ty, '.anchor(site_url('form/potwierdz/'.md5($id)),'kliknij tutaj').', aby dokończyć rejestrację.';
+            $message='Konto o podanym adresie zarejestrowałoo się w naszym serwisie. Jeśli byłeś to Ty, '.anchor(site_url('form/potwierdz/'.md5($id)),'kliknij tutaj').', aby dokończyć rejestrację.';
             if( mail($to, $subject, $message, $headers) ) {
                 $this->potwierdz($id);
             } else {
-                echo  "Zle blad za bledem";
+                redirect('Welcome');
 
                     }
         }
